@@ -79,11 +79,13 @@ function afterRun() {
     while (true) {
         //截图
         var img = captureScreen();
-
+		
         //确定
-        var upgrade = images.pixel(img, 820, 950);
+        var upgrade = images.pixel(img, checkForResolution(820, 950, img).positionX, checkForResolution(820, 950, img).positionY);
+		
         //恭喜
-        var upgrade2 = images.pixel(img, 500, 110);
+        var upgrade2 = images.pixel(img, checkForResolution(500, 110, img).positionX, checkForResolution(500, 110, img).positionY);
+		
         if (colors.equals(upgrade, "#ffffffff") && colors.equals(upgrade2, "#ffffffff")) {
             toast("升级");
             click(820, 950);
@@ -91,7 +93,7 @@ function afterRun() {
             sleep(2000);
         }
         //推荐性能分
-        var color = images.pixel(img, 1460, 888);
+        var color = images.pixel(img, checkForResolution(1460, 888, img).positionX, checkForResolution(1460, 888, img).positionY);
         //黄色或红色
         if (colors.equals(color, "#ffc3fc0f") || colors.equals(color, "#ffff0054")) {
             toast("即将开始下一次奔跑");
@@ -99,7 +101,7 @@ function afterRun() {
         }
         
         //按钮颜色为黄色
-        var button = images.pixel(img,1440,1000);
+        var button = images.pixel(img,checkForResolution(1440, 1000, img).positionX, checkForResolution(1440, 1000, img).positionY);
         if (colors.equals(button, "#ffc3fb12")) {
             click(1440, 1000);
             click(1440, 1000);
@@ -119,7 +121,6 @@ function run() {
         click(1600, 500);
         var now = new Date().getTime();
         if (now > exitTime) {
-            //{console.log("定时器结束");
             clearInterval(id);
         }
     }, 1000);
@@ -163,7 +164,7 @@ function chooseCar(x, y) {
 
     //截图
     var img = captureScreen();
-    var color = images.pixel(img, 1440, 1000);
+    var color = images.pixel(img, checkForResolution(1440, 1000, img).positionX, checkForResolution(1440, 1000, img).positionY);
     // 白色 #ffffffff
     // 红色 满油 #fffb1264
     //黄色 #ffc3fb12
@@ -188,4 +189,19 @@ function chooseCar(x, y) {
         chooseCar(x, y)
     }
 
+}
+
+function checkForResolution(x, y, img) {
+	var width = img.getWidth();
+	var height = img.getHeight();
+	if (width < height) {
+		var e = x;
+		x = y;
+		y = e;
+	}
+	
+	return {
+		positionX: x,
+		positionY: y
+	};
 }
