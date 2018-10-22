@@ -79,13 +79,13 @@ function afterRun() {
     while (true) {
         //截图
         var img = captureScreen();
-		
+
         //确定
         var upgrade = images.pixel(img, checkForResolution(820, 950, img).positionX, checkForResolution(820, 950, img).positionY);
-		
+
         //恭喜
         var upgrade2 = images.pixel(img, checkForResolution(500, 110, img).positionX, checkForResolution(500, 110, img).positionY);
-		
+
         if (colors.equals(upgrade, "#ffffffff") && colors.equals(upgrade2, "#ffffffff")) {
             toast("升级");
             click(820, 950);
@@ -99,14 +99,14 @@ function afterRun() {
             toast("即将开始下一次奔跑");
             break;
         }
-        
+
         //按钮颜色为黄色
-        var button = images.pixel(img,checkForResolution(1440, 1000, img).positionX, checkForResolution(1440, 1000, img).positionY);
+        var button = images.pixel(img, checkForResolution(1440, 1000, img).positionX, checkForResolution(1440, 1000, img).positionY);
         if (colors.equals(button, "#ffc3fb12")) {
             click(1440, 1000);
             click(1440, 1000);
         }
-        click(1600,500);
+        click(1600, 500);
     }
 
 }
@@ -192,16 +192,16 @@ function chooseCar(x, y) {
 }
 
 function checkForResolution(x, y, img) {
-	var width = img.getWidth();
-	var height = img.getHeight();
-	if (width < height) {
-		var e = x;
-		x = y;
-		y = e;
-	}
-	
-	return {
-		positionX: x,
-		positionY: y
-	};
+    var width = img.getWidth();
+    var height = img.getHeight();
+    if (width < height) {
+        var e = x;
+        x = y;
+        y = e;
+    }
+
+    return {
+        positionX: x,
+        positionY: y
+    };
 }
