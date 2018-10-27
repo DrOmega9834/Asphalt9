@@ -165,7 +165,7 @@ function afterRun() {
 
                 //一直点击返回
                 back();
-                sleep(500);
+                sleep(1000);
             }
         }
         sleep(500);
