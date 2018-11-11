@@ -207,7 +207,7 @@ function deviceInfo() {
     console.log("height:" + height);
     console.log("width:" + width);
     // 调整屏幕亮度
-    // device.setBrightness(0);
+    device.setBrightness(0);
     // 调整媒体声音
     device.setMusicVolume(0);
 }
