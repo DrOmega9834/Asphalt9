@@ -280,6 +280,8 @@ function afterRun() {
             sleep(3000);
         }
 
+        // 截图
+        var img = captureScreen();
         var leftup = images.pixel(img, checkForResolution(height/8, width/4, img).positionX, checkForResolution(height/4, width/4, img).positionY);
 		var rightup = images.pixel(img, checkForResolution(height*7/8, width/4, img).positionX, checkForResolution(height*7/8, width/4, img).positionY);
 		var leftdown = images.pixel(img, checkForResolution(height/8, width*3/4, img).positionX, checkForResolution(height/8, width*3/4, img).positionY);
