@@ -244,16 +244,6 @@ function chooseCar() {
     if (flag) {
         toastLog("都没油了,脚本退出");
         exit();
-        // let n = cars[0];
-        // var carPoint = {
-        //     x: profile.firstCar.x + profile.distance.x * parseInt((n - 1) / 2),
-        //     y: profile.firstCar.y + profile.distance.y * ((n - 1) % 2)
-        // }
-        // click(carPoint.x - profile.distance.x / 2, carPoint.y - profile.distance.y / 2);
-        // sleep(2000);
-        // //开始
-        // click(profile.goldenPoint.x, profile.goldenPoint.y);
-        // ad();
     }
 }
 
@@ -270,83 +260,4 @@ function checkForResolution(x, y, img) {
         positionX: x,
         positionY: y
     };
-}
-
-
-function ad() {
-    toastLog("action");
-    //本循环用来点击观看广告,因为点击跳过之后所卡顿时间不同
-    while (true) {
-        // 截图
-        var img = captureScreen();
-        var left = images.pixel(img, profile.left.x, profile.left.y);
-        var img = captureScreen();
-        var right = images.pixel(img, profile.right.x, profile.right.y);
-        // toastLog(colors.toString(left));
-        // toastLog(colors.toString(right));
-        //这里估计是auto.js的bug, 取点的颜色一直不对,取的点颜色一直是#ff0000
-        if (colors.equals(left, "#c3fb12") && (colors.equals(right, "#ffffff") || colors.equals(right, "#ff0000"))) {
-            click(profile.right.x, profile.right.y);
-            click(profile.right.x, profile.right.y);
-            break;
-        } else {
-            sleep(1000);
-        }
-    }
-
-    toast("开始看广告");
-
-    //广告时间
-    sleep(25000);
-
-    while (true) {
-        //一次back有时候未生效
-        back();
-        sleep(1000);
-        back();
-        sleep(1500);
-        //toast("返回");
-        // 截图
-        var img = captureScreen();
-        var left = images.pixel(img, profile.left.x, profile.left.y);
-        var right = images.pixel(img, profile.right.x, profile.right.y);
-        // toastLog(colors.toString(left));
-        // toastLog(colors.toString(right));
-        //广告还在继续
-        if (colors.equals(left, "#bababa")
-            // && colors.isSimilar(right, "#2580d8")
-        ) {
-            toast("继续广告");
-            click(profile.right.x, profile.right.y);
-            click(profile.right.x, profile.right.y);
-            //下次返回时间
-            sleep(7000);
-        } else {
-            sleep(8000);
-            // 截图
-            var img = captureScreen();
-            var left = images.pixel(img, profile.left.x, profile.left.y);
-            var right = images.pixel(img, profile.right.x, profile.right.y);
-            // toastLog(colors.toString(left));
-            // toastLog(colors.toString(right));
-            if (colors.equals(left, "#c3fb12")
-                // && colors.equals(right, "#ffffff")
-            ) {
-                main();
-            }
-            var button = images.pixel(img, profile.goldenPoint.x, profile.goldenPoint.y);
-            if (colors.equals(button, "#c3fb12")) {
-                toastLog("广告已看完");
-                //开始
-                click(profile.goldenPoint.x, profile.goldenPoint.y);
-            }
-            if (colors.equals(button, "#ffffff")) {
-                click(profile.goldenPoint.x, profile.goldenPoint.y);
-                main();
-            } else {
-                toastLog("程序异常");
-                exit();
-            }
-        }
-    }
 }

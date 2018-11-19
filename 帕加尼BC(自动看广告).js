@@ -296,7 +296,7 @@ function ad() {
     toast("开始看广告");
 
     //广告时间
-    sleep(25000);
+    sleep(29000);
 
     while (true) {
         //一次back有时候未生效
@@ -317,9 +317,9 @@ function ad() {
         ) {
             toast("继续广告");
             click(profile.right.x, profile.right.y);
-            click(profile.right.x, profile.right.y);
+            //click(profile.right.x, profile.right.y);
             //下次返回时间
-            sleep(7000);
+            sleep(8000);
         } else {
             sleep(8000);
             // 截图
@@ -331,21 +331,24 @@ function ad() {
             if (colors.equals(left, "#c3fb12")
                 // && colors.equals(right, "#ffffff")
             ) {
-                main();
+                ad();
             }
             var button = images.pixel(img, profile.goldenPoint.x, profile.goldenPoint.y);
             if (colors.equals(button, "#c3fb12")) {
                 toastLog("广告已看完");
                 //开始
                 click(profile.goldenPoint.x, profile.goldenPoint.y);
-            }
-            if (colors.equals(button, "#ffffff")) {
-                click(profile.goldenPoint.x, profile.goldenPoint.y);
-                main();
             } else {
-                toastLog("程序异常");
-                exit();
+                if (colors.equals(button, "#ffffff")) {
+                    click(profile.goldenPoint.x, profile.goldenPoint.y);
+                    ad();
+                } else {
+                    toastLog("程序异常");
+                    exit();
+                }
+
             }
+
         }
     }
 }

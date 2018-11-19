@@ -48,7 +48,7 @@ function mainEntrence() {
     click(profile.goldenPoint.x, profile.goldenPoint.y);
     sleep(3000);
     // 运行主函数
-    main();
+    ad();
 
 }
 
@@ -81,7 +81,7 @@ function eventListener() {
     });
 }
 
-function main() {
+function ad() {
     toastLog("action");
     //本循环用来点击观看广告,因为点击跳过之后所卡顿时间不同
     while (true) {
@@ -105,7 +105,7 @@ function main() {
     toast("开始看广告");
 
     //广告时间
-    sleep(25000);
+    sleep(29000);
 
     while (true) {
         //一次back有时候未生效
@@ -126,9 +126,9 @@ function main() {
         ) {
             toast("继续广告");
             click(profile.right.x, profile.right.y);
-            click(profile.right.x, profile.right.y);
+            // click(profile.right.x, profile.right.y);
             //下次返回时间
-            sleep(7000);
+            sleep(8000);
         } else {
             sleep(8000);
             // 截图
@@ -140,20 +140,22 @@ function main() {
             if (colors.equals(left, "#c3fb12")
                 // && colors.equals(right, "#ffffff")
             ) {
-                main();
+                ad();
             }
             var button = images.pixel(img, profile.goldenPoint.x, profile.goldenPoint.y);
             if (colors.equals(button, "#c3fb12")) {
                 toastLog("广告已看完");
                 exit();
-            }
-            if (colors.equals(button, "#ffffff")) {
-                click(profile.goldenPoint.x, profile.goldenPoint.y);
-                main();
             } else {
-                toastLog("程序异常");
-                exit();
+                if (colors.equals(button, "#ffffff")) {
+                    click(profile.goldenPoint.x, profile.goldenPoint.y);
+                    ad();
+                } else {
+                    toastLog("程序异常");
+                    exit();
+                }
             }
+
         }
     }
 }
