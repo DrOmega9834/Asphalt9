@@ -1,9 +1,9 @@
 // 选择可用的车,第一列第一辆编号为1,第一列第二辆为2,第二列第一辆为3,以此类推
 // 在第6行填写车的编号,最多6辆车循环
 // 按填写先后顺序用车
-// 请根据自己需求修改
+// 请根据自己实际情况修改第6行后开始运行脚本
 
-const cars = [1,2,3,4,5,6];
+const cars = [1, 2, 3, 4, 5, 6];
 const width = device.width;
 const height = device.height;
 
@@ -51,13 +51,11 @@ var profile2160 = {
         y: 974
     },
 
-    //生涯,开始,继续
     goldenPoint: {
         x: 1700,
         y: 1000
     },
 
-    //firstCar
     firstCar: {
         x: 565,
         y: 630
@@ -73,10 +71,8 @@ var profile2160 = {
         y: 313
     },
 
-    //左边按钮
     left: { x: 961, y: 730 },
 
-    //右边按钮
     right: { x: 1170, y: 730 }
 }
 
@@ -116,16 +112,16 @@ function before() {
         toast('请求截图失败，程序结束');
         exit();
     }
-    //调整屏幕亮度
+    // 调整屏幕亮度及媒体音量
     device.setBrightness(0);
     device.setMusicVolume(0);
 }
 
 function eventListener() {
     threads.start(function () {
-        //启用按键监听
+        // 启用按键监听
         events.observeKey();
-        //监听音量上键按下
+        // 监听音量上键按下
         events.onKeyDown("volume_down", function (event) {
             toastLog("程序手动退出");
             device.setBrightness(40);
@@ -136,41 +132,43 @@ function eventListener() {
 }
 
 function main() {
-    //比赛
+    // 比赛
     click(profile.compete.x, profile.compete.y);
     click(profile.compete.x, profile.compete.y);
     sleep(2000);
 
+    // 选车 & 开始比赛
     toast("选车");
     sleep(700);
-    //选车
     chooseCar();
+    click(profile.goldenPoint.x, profile.goldenPoint.y);
+    click(profile.goldenPoint.x, profile.goldenPoint.y);
 
-    //载入动画
+    // 载入动画
     sleep(10000);
 
-    //开跑
+    // 开跑
     threads.start(function () {
         run()
     });
 
-    //跑完之后
+    // 跑完之后
     afterRun();
 }
 
 
 function run() {
-    //在新线程执行的代码
-    //console.log("定时器启动,定时点击氮气");
-    //预计时间90秒
+    // 在新线程执行的代码
+    // console.log("定时器启动,定时点击氮气");
+    // 预计时间90秒
     var exitTime = new Date().getTime() + 95000;
-    //定时点击氮气
+    // 定时点击氮气
     var id = setInterval(function () {
         click(height * 4 / 5, width / 2);
         swipe(5 * height / 8, width / 2, height * 7 / 8, width / 2, 500);
         var now = new Date().getTime();
         if (now > exitTime) {
-            //{console.log("定时器结束");
+            // console.log("定时器结束");
             clearInterval(id);
         }
     }, 1000);
@@ -182,7 +180,7 @@ function afterRun() {
     sleep(95000);
     toast("跑完了");
 
-    //本层循环用于点击三次继续.
+    // 本层循环用于点击三次继续.
     while (true) {
         // 截图
         var img = captureScreen();
@@ -190,14 +188,16 @@ function afterRun() {
         // 倒计时
         var color_countdown = images.pixel(img, profile.countdown.x, profile.countdown.y);
 
-        // 粉红(在跑完之后会闪现出活动主页)
+        // 粉红(在跑完之后会出现一闪而过的活动主页)
         if (colors.equals(color_countdown, "#ffff0054")) {
             break;
         }
         click(profile.goldenPoint.x, profile.goldenPoint.y);
     }
 
-    //本层循环用于控制领代币或者升级
+    sleep(1000);
+
+    // 本层循环用于控制领代币或者升级
     while (true) {
         sleep(1000);
         // 截图
@@ -242,8 +242,17 @@ function chooseCar() {
         }
     }
     if (flag) {
-        toastLog("都没油了,脚本退出");
-        exit();
+        toastLog("都没油了");
+        let n = cars[0];
+        var carPoint = {
+            x: profile.firstCar.x + profile.distance.x * parseInt((n - 1) / 2),
+            y: profile.firstCar.y + profile.distance.y * ((n - 1) % 2)
+        }
+        click(carPoint.x - profile.distance.x / 2, carPoint.y - profile.distance.y / 2);
+        sleep(2000);
+        //开始
+        click(profile.goldenPoint.x, profile.goldenPoint.y);
+        ad();
     }
 }
 
@@ -260,4 +269,76 @@ function checkForResolution(x, y, img) {
         positionX: x,
         positionY: y
     };
+}
+
+
+function ad() {
+    toastLog("开始为车辆补充燃油");
+    while (true) {
+        // confirm the UI
+        var img = captureScreen();
+        var left = images.pixel(img, profile.left.x, profile.left.y);
+        var right = images.pixel(img, profile.right.x, profile.right.y);
+        // toastLog("left is " + colors.toString(left));
+        // toastLog("right is " + colors.toString(right));
+        if (colors.equals(left, "#c3fb12") && colors.equals(right, "#ffffff")) {
+            click(profile.right.x, profile.right.y);
+            toastLog("开始看这个广告");
+            break;
+        }
+        else {
+            sleep(1000);
+        }
+    }
+
+    // wait for playing ad
+    sleep(30000);
+
+    var jump_back = 0;
+
+    while (true) {
+        if (!jump_back) {
+            toastLog("尝试返回")
+            back();
+            sleep(5000);
+        }
+
+        var img = captureScreen();
+        var left = images.pixel(img, profile.left.x, profile.left.y);
+        var right = images.pixel(img, profile.right.x, profile.right.y);
+        var next = images.pixel(img, profile.goldenPoint.x, profile.goldenPoint.y);
+        // toastLog("left is " + colors.toString(left));
+        // toastLog("right is " + colors.toString(right));
+        // toastLog("next is " + colors.toString(next));
+
+        // grey blue
+        if (colors.equals(left, "#bababa") && colors.isSimilar(right, "#2580d8")) {
+            toastLog("继续广告");
+            click(profile.right.x, profile.right.y);
+            // click(profile.right.x, profile.right.y);
+            sleep(8000);
+        }
+        // green white
+        else if (colors.equals(left, "#c3fb12") && colors.equals(right, "#ffffff")) {
+            toastLog("看下一个广告")
+            ad();
+        }
+        // next is green
+        else if (colors.equals(next, "#c3fb12")) {
+            toastLog("车辆燃油已恢复,即将开始下一场比赛");
+            break;
+        }
+        // next is white
+        else if (colors.equals(next, "#ffffff")) {
+            toastLog("偶然多点一次返回，看下一个广告")
+            click(profile.goldenPoint.x, profile.goldenPoint.y);
+            ad();
+        }
+        // In progress
+        else {
+            toastLog("请稍等");
+            sleep(3000);
+            jump_back = 1;
+        }
+    }
 }
