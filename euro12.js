@@ -1,8 +1,44 @@
 //选择可用的车,第一列第一张编号为1,第一列第二张为2,第二列第一张为3,依次递增.可根据自己需求修改
 //填写车的编号,1920*1080上最多6张车循环,按填写先后顺序用车
 const cars = [1, 2, 3, 4, 5, 6];
-const height = device.height;
-const width = device.width;
+
+
+/********** 设备 start **********/
+const { width, height } = device;
+
+const POWER_SAVE_BRIGHTNESS = 0;
+const POWER_SAVE_MUSIC_VOLUME = 0;
+const AUTO_BRIGHTNESS_MODE = 1;
+
+const isAutoBrightnessMode = device.getBrightnessMode();
+const previousBrightness = device.getBrightness();
+const previousMusicVolume = device.getMusicVolume();
+
+/**
+ * 调节亮度及音量，进入低功耗模式
+ */
+const _savePower = () => {
+    device.setBrightness(POWER_SAVE_BRIGHTNESS);
+    device.setMusicVolume(POWER_SAVE_MUSIC_VOLUME);
+}
+
+/**
+ * 还原运行时脚本之前的屏幕亮度及设备音量
+ */
+const _revertPower = () => {
+    isAutoBrightnessMode ? device.setBrightnessMode(AUTO_BRIGHTNESS_MODE) : device.setBrightness(previousBrightness);
+    device.setMusicVolume(previousMusicVolume);
+}
+
+/**
+ * 是否调节亮度及音量，以此减少功耗
+ * @param {boolean} enable 
+ */
+const enablePowerSave = enable => enable ? _savePower() : _revertPower();
+/********** 设备 end **********/
+
+
+
 var rootAutomator;
 var robot = new Robot();
 
@@ -138,7 +174,7 @@ if (height === 1920 && width == 1080) {
     profile = profileB;
 } else if (height === 2220 && width === 1080) {
     profile = profileC;
-} 
+}
 // else if (height === 1280 && width === 720) {
 //     profile = profileD;
 // } 
@@ -176,7 +212,7 @@ function eventListener() {
             if (rootAutomator != null) {
                 rootAutomator.exit();
             }
-            device.setBrightness(40);
+            enablePowerSave(false);
             threads.shutDownAll();
             exit();
         });
@@ -204,12 +240,7 @@ function deviceInfo() {
         toast('请求截图失败，程序结束');
         exit();
     }
-    console.log("height:" + height);
-    console.log("width:" + width);
-    // 调整屏幕亮度
-    device.setBrightness(0);
-    // 调整媒体声音
-    device.setMusicVolume(0);
+    enablePowerSave(true);
 }
 
 function main() {
@@ -263,7 +294,7 @@ function afterRun() {
     }
 
     //可能升级或有广告.
-    while(true){
+    while (true) {
         //若退出选关,可将此值调大
         sleep(1500);
         // 截图
@@ -273,7 +304,7 @@ function afterRun() {
             checkForResolution(profile.recommendedPoints.x, profile.recommendedPoints.y, img).positionX,
             checkForResolution(profile.recommendedPoints.x, profile.recommendedPoints.y, img).positionY);
         var hasFinish = colors.equals(color, "#ffc3fc0f") || colors.equals(color, "#ffff0054");
-        if(hasFinish){
+        if (hasFinish) {
             break;
         } else {
             robot.back();
@@ -282,28 +313,28 @@ function afterRun() {
 
         // 截图
         var img = captureScreen();
-        var leftup = images.pixel(img, checkForResolution(height/8, width/4, img).positionX, checkForResolution(height/4, width/4, img).positionY);
-		var rightup = images.pixel(img, checkForResolution(height*7/8, width/4, img).positionX, checkForResolution(height*7/8, width/4, img).positionY);
-		var leftdown = images.pixel(img, checkForResolution(height/8, width*3/4, img).positionX, checkForResolution(height/8, width*3/4, img).positionY);
-		var rightdown = images.pixel(img, checkForResolution(height*7/8, width*3/4, img).positionX, checkForResolution(height*7/8, width*3/4, img).positionY);
-		
-		var AD1 = color_equal(leftup, "#ff080906");
-		var AD2 = color_equal(rightup, "#ff080906");
-		var AD3 = color_equal(leftdown, "#ff080906");
-		var AD4 = color_equal(rightdown, "#ff080906");
-		
-		if (AD1 && AD2 && AD3 && AD4){
+        var leftup = images.pixel(img, checkForResolution(height / 8, width / 4, img).positionX, checkForResolution(height / 4, width / 4, img).positionY);
+        var rightup = images.pixel(img, checkForResolution(height * 7 / 8, width / 4, img).positionX, checkForResolution(height * 7 / 8, width / 4, img).positionY);
+        var leftdown = images.pixel(img, checkForResolution(height / 8, width * 3 / 4, img).positionX, checkForResolution(height / 8, width * 3 / 4, img).positionY);
+        var rightdown = images.pixel(img, checkForResolution(height * 7 / 8, width * 3 / 4, img).positionX, checkForResolution(height * 7 / 8, width * 3 / 4, img).positionY);
+
+        var AD1 = color_equal(leftup, "#ff080906");
+        var AD2 = color_equal(rightup, "#ff080906");
+        var AD3 = color_equal(leftdown, "#ff080906");
+        var AD4 = color_equal(rightdown, "#ff080906");
+
+        if (AD1 && AD2 && AD3 && AD4) {
             robot.back();
             sleep(3000);
         }
     }
 }
 
-function color_equal(color1,color2){
-	if (colors.equals(color1,color2))
-		return 1;
-	else 
-		return 0;
+function color_equal(color1, color2) {
+    if (colors.equals(color1, color2))
+        return 1;
+    else
+        return 0;
 }
 
 function run() {

@@ -4,8 +4,43 @@
 // 请根据自己实际情况修改第6行后开始运行脚本
 
 const cars = [1, 2, 3, 4, 5, 6];
-const width = device.width;
-const height = device.height;
+
+
+/********** 设备 start **********/
+const { width, height } = device;
+
+const POWER_SAVE_BRIGHTNESS = 0;
+const POWER_SAVE_MUSIC_VOLUME = 0;
+const AUTO_BRIGHTNESS_MODE = 1;
+
+const isAutoBrightnessMode = device.getBrightnessMode();
+const previousBrightness = device.getBrightness();
+const previousMusicVolume = device.getMusicVolume();
+
+/**
+ * 调节亮度及音量，进入低功耗模式
+ */
+const _savePower = () => {
+    device.setBrightness(POWER_SAVE_BRIGHTNESS);
+    device.setMusicVolume(POWER_SAVE_MUSIC_VOLUME);
+}
+
+/**
+ * 还原运行时脚本之前的屏幕亮度及设备音量
+ */
+const _revertPower = () => {
+    isAutoBrightnessMode ? device.setBrightnessMode(AUTO_BRIGHTNESS_MODE) : device.setBrightness(previousBrightness);
+    device.setMusicVolume(previousMusicVolume);
+}
+
+/**
+ * 是否调节亮度及音量，以此减少功耗
+ * @param {boolean} enable 
+ */
+const enablePowerSave = enable => enable ? _savePower() : _revertPower();
+/********** 设备 end **********/
+
+
 
 var profile1920 = {
     //比赛
@@ -112,9 +147,7 @@ function before() {
         toast('请求截图失败，程序结束');
         exit();
     }
-    // 调整屏幕亮度及媒体音量
-    device.setBrightness(0);
-    device.setMusicVolume(0);
+    enablePowerSave(true);
 }
 
 function eventListener() {
@@ -124,7 +157,7 @@ function eventListener() {
         // 监听音量上键按下
         events.onKeyDown("volume_down", function (event) {
             toastLog("程序手动退出");
-            device.setBrightness(40);
+            enablePowerSave(false);
             threads.shutDownAll();
             exit();
         });
