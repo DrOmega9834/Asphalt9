@@ -51,7 +51,7 @@ var rootAutomator;
 var robot = new Robot();
 
 //1920*1080分辨率
-var profileA = {
+var profile1920 = {
 
     // 最上方代币图标
     token: { x: 921 , y: 42 },
@@ -92,7 +92,7 @@ var profileA = {
 }
 
 //2160*1080分辨率
-var profileB = {
+var profile2160 = {
 
     // 最上方代币图标
     token: { x: 1035 , y: 48 },
@@ -133,8 +133,15 @@ var profileB = {
 
 }
 
-/* 2220*1080分辨率
-var profileC = {
+// 2220*1080分辨率
+var profile2220 = {
+    
+    // 最上方代币图标
+    token: { x: 1068 , y: 50 },
+
+    // 最上方积分图标
+    credit: { x: 1386 , y: 50 },
+
     //生涯,开始,继续
     goldenPoint: { x: 1700, y: 980 },
 
@@ -163,11 +170,11 @@ var profileC = {
     distance: { x: 513, y: 359 }
 
 }
-*/
+
 
 // //1280*720分辨率
 // //720p分辨率可以通过1008p缩放计算出来
-// var profileD = {
+// var profile_1280 = {
 //     //生涯,开始,继续
 //     goldenPoint: { x: 980, y: 650 },
 
@@ -197,19 +204,64 @@ var profileC = {
 
 // }
 
+// 2280*1080分辨率
+var profile2280 = {
+
+    // 最上方代币图标
+    token: { x: 1098 , y: 51 },
+
+    // 最上方积分图标
+    credit: { x: 1422 , y: 48 },
+
+    // 生涯,开始,继续
+    goldenPoint: { x: 1750, y: 1000 },
+
+    // 生涯百分比
+    careerPercent: { x: 1875, y: 1023 },
+
+    // euro
+    euro: { x: 1848, y: 300 },
+
+    swipeScreen: function () {
+        for (i = 0; i < 4; i++) {
+            robot.swipe(height * 2 / 3, 150, height * 2 / 3, 1000, 400);
+            sleep(200);
+        }
+    },
+
+    // 第12关
+    block12: { x: 805, y: 677 },
+
+    // 推荐性能分
+    recommendedPoints: { x: 2100, y: 852 },
+
+    // 第一辆车
+    firstCar: { x: 570, y: 630 },
+
+    // 车辆间距
+    distance: { x: 512, y: 358 },
+
+    // 升级按钮
+    upgrade: { x: 1140, y: 870 }
+
+}
+
 var profile;
 if (height === 1920 && width == 1080) {
-    profile = profileA;
+    profile = profile1920;
 } 
 else if (height === 2160 && width === 1080) {
-    profile = profileB;
+    profile = profile2160;
 } 
 /*else if (height === 2220 && width === 1080) {
-    profile = profileC;
+    profile = profile2220;
 }*/
 // else if (height === 1280 && width === 720) {
-//     profile = profileD;
+//     profile = profile_1280;
 // } 
+else if (height == 2280 && width == 1080){
+    profile = profile2280;
+}
 else {
     toast("该分辨率暂未支持,程序结束");
     exit();
@@ -264,13 +316,15 @@ function beforeRun() {
 
     // 点击生涯
     robot.click(profile.goldenPoint.x, profile.goldenPoint.y);
+    sleep(1000);
     robot.click(profile.goldenPoint.x, profile.goldenPoint.y);
+    sleep(1000);
     robot.click(profile.goldenPoint.x, profile.goldenPoint.y);
     sleep(2000);
 
     // 点击位置
     robot.click(profile.careerPercent.x, profile.careerPercent.y);
-    sleep(500);
+    sleep(2000);
     // 选择关卡
     robot.click(profile.euro.x, profile.euro.y);
     sleep(1000);
