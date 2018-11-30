@@ -167,8 +167,9 @@ var profile2220 = {
     //firstCar
     firstCar: { x: 565, y: 630 },
 
-    distance: { x: 513, y: 359 }
-
+    distance: { x: 513, y: 359 },
+    
+    upgrade: {x: 1110, y:870 }
 }
 
 
