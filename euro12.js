@@ -254,9 +254,9 @@ if (height === 1920 && width == 1080) {
 else if (height === 2160 && width === 1080) {
     profile = profile2160;
 } 
-/*else if (height === 2220 && width === 1080) {
+else if (height === 2220 && width === 1080) {
     profile = profile2220;
-}*/
+}
 // else if (height === 1280 && width === 720) {
 //     profile = profile_1280;
 // } 
