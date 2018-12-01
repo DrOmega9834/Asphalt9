@@ -167,8 +167,9 @@ var profile2220 = {
     //firstCar
     firstCar: { x: 565, y: 630 },
 
-    distance: { x: 513, y: 359 }
-
+    distance: { x: 513, y: 359 },
+    
+    upgrade: {x: 1110, y:870 }
 }
 
 
@@ -253,9 +254,9 @@ if (height === 1920 && width == 1080) {
 else if (height === 2160 && width === 1080) {
     profile = profile2160;
 } 
-/*else if (height === 2220 && width === 1080) {
+else if (height === 2220 && width === 1080) {
     profile = profile2220;
-}*/
+}
 // else if (height === 1280 && width === 720) {
 //     profile = profile_1280;
 // } 
