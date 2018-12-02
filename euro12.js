@@ -370,7 +370,7 @@ function afterRun(counter_loop) {
 
     var counter_next = 0;
     // 完成三次结算
-    while (counter_next <= 3) {
+    while (counter_next <= 2) {
         if (check_state() == 5) {
             robot.click(profile.goldenPoint.x, profile.goldenPoint.y);
             sleep(1500);
