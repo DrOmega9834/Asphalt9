@@ -167,9 +167,8 @@ var profile2220 = {
     firstCar: { x: 565, y: 630 },
 
     distance: { x: 513, y: 359 },
-
-     // 升级按钮
-    upgrade: { x: 1080, y: 930 }
+    
+    upgrade: {x: 1110, y:870 }
 }
 
 // 2244*1080分辨率
@@ -268,7 +267,7 @@ var profile2340 = {
     goldenPoint: { x: 1800, y: 1000 },
 
     // 生涯百分比
-    careerPercent: { x: 1924, y: 1010 },
+    careerPercent: { x: 1935, y: 1010 },
 
     // euro
     euro: { x: 1634, y: 282 },
@@ -281,7 +280,7 @@ var profile2340 = {
     },
 
     // 第12关
-    block12: { x: 805, y: 677 },
+    block12: { x: 831, y: 555 },
 
     // 推荐性能分
     recommendedPoints: { x: 2200, y: 838 },
@@ -309,6 +308,9 @@ else if (height === 2220 && width === 1080) {
 // else if ((height === 2244 || height === 2246) && width === 1080) {
 //     profile = profile2244;
 // }
+// else if (height === 1280 && width === 720) {
+//     profile = profile_1280;
+// } 
 else if (height == 2280 && width == 1080){
     profile = profile2280;
 }
@@ -434,8 +436,6 @@ function afterRun(counter_loop) {
         }
     }
     
-    // sleep(4000);
-    
     var counter_euro = 0;
     while (counter_euro < 10) {
         // 三次结算之后的状态
@@ -463,81 +463,6 @@ function afterRun(counter_loop) {
     }
     toastLog("即将开始下一场比赛");
 }
-
-/* function afterRun() {
-    sleep(69000);
-    toast("跑完了");
-
-    var temp = 1;
-
-    //点击三次确认
-    while (temp <= 3) {
-        // 截图
-        var img = captureScreen();
-        // 按钮颜色为黄色
-        var button = images.pixel(img,
-            checkForResolution(profile.goldenPoint.x, profile.goldenPoint.y, img).positionX,
-            checkForResolution(profile.goldenPoint.x, profile.goldenPoint.y, img).positionY);
-        // 推荐性能分
-        var color = images.pixel(img,
-            checkForResolution(profile.recommendedPoints.x, profile.recommendedPoints.y, img).positionX,
-            checkForResolution(profile.recommendedPoints.x, profile.recommendedPoints.y, img).positionY);
-
-        var hasFinish = colors.equals(color, "#ffc3fc0f") || colors.equals(color, "#ffff0054");
-        if (colors.equals(button, "#ffc3fb12") && !hasFinish) {
-            robot.click(profile.goldenPoint.x, profile.goldenPoint.y);
-            sleep(500);
-            temp++;
-        }
-        //若未跑完仍可点击氮气
-        robot.click(height * 4 / 5, width / 2);
-    }
-
-    //可能升级或有广告.
-    while (true) {
-        //若退出选关,可将此值调大
-        sleep(1500);
-        // 截图
-        var img = captureScreen();
-        // 推荐性能分
-        var color = images.pixel(img,
-            checkForResolution(profile.recommendedPoints.x, profile.recommendedPoints.y, img).positionX,
-            checkForResolution(profile.recommendedPoints.x, profile.recommendedPoints.y, img).positionY);
-        var hasFinish = colors.equals(color, "#ffc3fc0f") || colors.equals(color, "#ffff0054");
-        if (hasFinish) {
-            break;
-        } else {
-            robot.back();
-            sleep(3000);
-        }
-
-        // 截图
-        var img = captureScreen();
-        var leftup = images.pixel(img, checkForResolution(height / 8, width / 4, img).positionX, checkForResolution(height / 4, width / 4, img).positionY);
-        var rightup = images.pixel(img, checkForResolution(height * 7 / 8, width / 4, img).positionX, checkForResolution(height * 7 / 8, width / 4, img).positionY);
-        var leftdown = images.pixel(img, checkForResolution(height / 8, width * 3 / 4, img).positionX, checkForResolution(height / 8, width * 3 / 4, img).positionY);
-        var rightdown = images.pixel(img, checkForResolution(height * 7 / 8, width * 3 / 4, img).positionX, checkForResolution(height * 7 / 8, width * 3 / 4, img).positionY);
-
-        var AD1 = _color_equal(leftup, "#ff080906");
-        var AD2 = _color_equal(rightup, "#ff080906");
-        var AD3 = _color_equal(leftdown, "#ff080906");
-        var AD4 = _color_equal(rightdown, "#ff080906");
-
-        if (AD1 && AD2 && AD3 && AD4) {
-            robot.back();
-            sleep(3000);
-        }
-    }
-}
-
-
-function _color_equal(color1, color2) {
-    if (colors.equals(color1, color2))
-        return 1;
-    else
-        return 0;
-}
-*/
 
 function run() {
     // 在新线程执行的代码
