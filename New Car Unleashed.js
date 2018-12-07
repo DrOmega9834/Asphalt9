@@ -310,8 +310,9 @@ function chooseCar() {
     }
     if (flag) {
         toastLog("都没油了");
-        //看广告脚本有问题...暂且屏蔽
-        exit();
+        sleep(300000);
+        chooseCar();
+        /*
         let n = cars[0];
         var carPoint = {
             x: profile.firstCar.x + profile.distance.x * parseInt((n - 1) / 2),
@@ -321,7 +322,7 @@ function chooseCar() {
         sleep(2000);
         //开始
         click(profile.goldenPoint.x, profile.goldenPoint.y);
-        ad();
+        ad();*/
     }
 }
 
