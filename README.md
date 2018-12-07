@@ -48,5 +48,6 @@
 shuqin2333@gmail.com
 
 ## 捐赠作者：
-如果您觉得我的脚本有帮到您，您可以捐赠作者，您的捐赠将是我最大的动力。
-![alipay](alipay.png)
+如果您觉得我的脚本有帮到您，您可以捐赠作者，您的捐赠将是我最大的动力。<br/>
+支付宝支付:<br/>![alipay](alipay.png) <br/>
+微信支付:<br/>![wechat](wechat.png)
