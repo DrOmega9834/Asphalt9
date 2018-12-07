@@ -40,7 +40,6 @@ const _revertPower = () => {
 
 /**
  * 是否调节亮度及音量，以此减少功耗
- * @param {boolean} enable 
  */
 const enablePowerSave = enable => enable ? _savePower() : _revertPower();
 /********** 设备 end **********/
@@ -167,41 +166,51 @@ var profile2220 = {
     //firstCar
     firstCar: { x: 565, y: 630 },
 
-    distance: { x: 513, y: 359 }
+    distance: { x: 513, y: 359 },
 
+     // 升级按钮
+    upgrade: { x: 1080, y: 930 }
 }
 
+// 2244*1080分辨率
+// var profile2244 = {
 
-// //1280*720分辨率
-// //720p分辨率可以通过1008p缩放计算出来
-// var profile_1280 = {
-//     //生涯,开始,继续
-//     goldenPoint: { x: 980, y: 650 },
+//     // 最上方代币图标
+//     token: { x: 1060 , y: 66 },
 
-//     //生涯百分比
-//     careerPercent: { x: 1079.3, y: 693 },
+//     // 最上方积分图标
+//     credit: { x: 1366 , y: 66 },
 
-//     //euro
-//     euro: { x: 420, y: 184 },
+//     // 生涯,开始,继续
+//     goldenPoint: { x: 1665, y: 1000 },
+
+//     // 生涯百分比
+//     careerPercent: { x: 1990, y: 1024 },
+
+//     // euro
+//     euro: { x: 1848, y: 300 },
 
 //     swipeScreen: function () {
-//         for (i = 0; i < 2; i++) {
+//         for (i = 0; i < 4; i++) {
 //             robot.swipe(height * 2 / 3, 150, height * 2 / 3, 900, 400);
 //             sleep(200);
 //         }
 //     },
 
-//     //12
-//     block12: { x: 450, y: 100 },
+//     // 第12关
+//     block12: { x: 775, y: 261 },
 
-//     //推荐性能分
-//     recommendedPoints: { x: 1200, y: 588 },
+//     // 推荐性能分
+//     recommendedPoints: { x: 2030, y: 852 },
 
-//     //firstCar
-//     firstCar: { x: 370, y: 410.6 },
+//     // 第一辆车
+//     firstCar: { x: 633, y: 625 },
 
-//     distance: { x: 346, y: 243.3 }
+//     // 车辆间距
+//     distance: { x: 495, y: 360 },
 
+//    // 升级按钮
+//    upgrade: { x: 1080, y: 930 }
 // }
 
 // 2280*1080分辨率
@@ -246,6 +255,47 @@ var profile2280 = {
 
 }
 
+// 2340*1080分辨率
+var profile2340 = {
+
+    // 最上方代币图标
+    token: { x: 1106 , y: 72 },
+
+    // 最上方积分图标
+    credit: { x: 1443 , y: 72 },
+
+    // 生涯,开始,继续
+    goldenPoint: { x: 1800, y: 1000 },
+
+    // 生涯百分比
+    careerPercent: { x: 1924, y: 1010 },
+
+    // euro
+    euro: { x: 1634, y: 282 },
+
+    swipeScreen: function () {
+        for (i = 0; i < 4; i++) {
+            robot.swipe(height * 2 / 3, 150, height * 2 / 3, 1000, 400);
+            sleep(200);
+        }
+    },
+
+    // 第12关
+    block12: { x: 805, y: 677 },
+
+    // 推荐性能分
+    recommendedPoints: { x: 2200, y: 838 },
+
+    // 第一辆车
+    firstCar: { x: 573, y: 643 },
+
+    // 车辆间距
+    distance: { x: 510, y: 358 },
+
+   // 升级按钮
+   upgrade: { x: 1140, y: 870 }
+}
+
 var profile;
 if (height === 1920 && width == 1080) {
     profile = profile1920;
@@ -253,14 +303,17 @@ if (height === 1920 && width == 1080) {
 else if (height === 2160 && width === 1080) {
     profile = profile2160;
 } 
-/*else if (height === 2220 && width === 1080) {
+else if (height === 2220 && width === 1080) {
     profile = profile2220;
-}*/
-// else if (height === 1280 && width === 720) {
-//     profile = profile_1280;
-// } 
+}
+// else if ((height === 2244 || height === 2246) && width === 1080) {
+//     profile = profile2244;
+// }
 else if (height == 2280 && width == 1080){
     profile = profile2280;
+}
+else if (height === 2340 && width === 1080) {
+    profile = profile2340;
 }
 else {
     toast("该分辨率暂未支持,程序结束");
@@ -276,8 +329,6 @@ function main() {
     toast("开局可能会弹广告,请自己手动关掉,直至保证程序正常选关为止");
     deviceInfo();
     eventListener();
-    // sleep(5000);
-
     // 选关卡
     beforeRun();
     
