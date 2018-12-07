@@ -114,8 +114,8 @@ var profile2160 = {
 var profile2340 = {
     //比赛
     compete: {
-        x: 1800,
-        y: 1000
+        x: 1863,
+        y: 961
     },
 
      // 生涯,开始,继续
