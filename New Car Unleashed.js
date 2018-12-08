@@ -193,7 +193,7 @@ mainEntrence();
 
 //程序主入口
 function mainEntrence() {
-    toast("请切换至BC活动主界面");
+    toast("请切换至新车活动主界面");
     sleep(2000);
     toast("3秒后将开始运行程序");
     sleep(3000);
@@ -233,6 +233,7 @@ function eventListener() {
 function main() {
     // 比赛
     click(profile.compete.x, profile.compete.y);
+    sleep(1000);
     click(profile.compete.x, profile.compete.y);
     sleep(2000);
 
@@ -240,6 +241,7 @@ function main() {
     toast("选车");
     sleep(700);
     chooseCar();
+    sleep(2000);
     click(profile.goldenPoint.x, profile.goldenPoint.y);
     click(profile.goldenPoint.x, profile.goldenPoint.y);
 
