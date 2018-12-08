@@ -69,8 +69,8 @@ var profile1920 = {
 
     //活动首页取特征点
     countdown: {
-        x: 331,
-        y: 292
+        x: 94,
+        y: 293
     },
 
     //左边按钮
@@ -102,14 +102,43 @@ var profile2160 = {
     },
 
     countdown: {
-        x: 337,
-        y: 313
+        x: 160,
+        y: 224
     },
 
     left: { x: 961, y: 730 },
 
     right: { x: 1170, y: 730 }
 }
+
+// var profile2246 = {
+//     //比赛
+//     compete: {
+//         x: 1750,
+//         y: 1000
+//     },
+
+//      // 生涯,开始,继续
+//      goldenPoint: { x: 1750, y: 1000 },
+
+//     // 第一辆车
+//     firstCar: { x: 525, y: 636 },
+
+//     // 车辆间距
+//     distance: { x: 510, y: 358 },
+
+//     //每辆车的距离
+//     distance: {
+//         x: 493,
+//         y: 358.5
+//     },
+
+//     //活动首页取特征点
+//     countdown: {
+//         x: 222,
+//         y: 310
+//     }
+// }
 
 var profile2340 = {
     //比赛
@@ -151,6 +180,9 @@ else if ((height === 2160 || height === 2220) && width === 1080) {
 else if (height === 2340 && width === 1080) {
     profile = profile2340;
 }
+// else if (height === 2246 && width === 1080) {
+//     profile = profile2246;
+// }
 else {
     toast("该分辨率暂未支持,程序结束");
     exit();
@@ -261,8 +293,6 @@ function afterRun() {
         }
         click(profile.goldenPoint.x, profile.goldenPoint.y);
     }
-
-    sleep(1000);
 
     // 本层循环用于控制领代币或者升级
     while (true) {
