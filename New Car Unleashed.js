@@ -264,7 +264,7 @@ function run() {
     // 定时点击氮气
     var id = setInterval(function () {
         click(height * 4 / 5, width / 2);
-        swipe(5 * height / 8, width / 2, height * 7 / 8, width / 2, 500);
+        swipe(5 * height / 8, width / 2, height * 7 / 8, width / 2, 300);
         var now = new Date().getTime();
         if (now > exitTime) {
             // console.log("定时器结束");
