@@ -3,7 +3,7 @@
 // 按填写先后顺序用车
 // 请根据自己实际情况修改第6行后开始运行脚本
 
-const cars = [1, 2, 3, 4, 5, 6];
+const cars = [5, 6, 1, 3, 4, 2];
 
 
 /********** 设备 start **********/
@@ -262,7 +262,7 @@ function run() {
     // 在新线程执行的代码
     // console.log("定时器启动,定时点击氮气");
     // 预计时间90秒
-    var exitTime = new Date().getTime() + 90000;
+    var exitTime = new Date().getTime() + 85000;
     // 定时点击氮气
     var id = setInterval(function () {
         click(height * 4 / 5, width / 2);
@@ -278,7 +278,7 @@ function run() {
 
 
 function afterRun() {
-    sleep(90000);
+    sleep(85000);
     toast("跑完了");
 
     // 本层循环用于点击三次继续.
