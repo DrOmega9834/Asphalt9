@@ -1,5 +1,6 @@
 # Asphalt 9 Scripts
 [中文版本说明](README_CH.md)
+
 ## Introductions
 * Automatically racing and getting credits.
 * Use Auto.js as developing and running environment.
@@ -34,7 +35,7 @@
 3. Scripts would click nitro continuously when racing.
 
 ## Detailed explanations of scripts
-We have three scripts:
+We have two scripts:
 * The euro scripts can run 12rd level of EURO SHOWN in chapter 4 without stopping.
     * We use the first 6 cars (actually z4, XL, BMW and DS is enough) to run 12rd level of EURO SHOWN in chapter 4.You had better complete the whole EURO SHOWN season and your cars' rank cannot be too low to complete races.
     * You're able to modify which cars will be used and which order they will be used by editing "cars" in  the top of this scripts.
@@ -56,8 +57,8 @@ We have three scripts:
 
 ## Donation
 If you think our scripts is helpful for you, you can donate us.
+Your donation is the best encouragement for us.<br/>
 
-Your donation is the best encouragement for us.
 | Alipay: | Wechar pay: |
 | ---------- | -------- |
 | ![alipay](alipay.png) | ![wechat](wechat.png) |
