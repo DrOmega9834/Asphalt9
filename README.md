@@ -57,7 +57,7 @@ We have three scripts:
 ## Donation
 If you think our scripts is helpful for you, you can donate us.
 
-Your donation is the best encouragement for us.<br/>
-| Ali pay: | Wechat pay: |
-| - | - |
+Your donation is the best encouragement for us.
+| Alipay: | Wechar pay: |
+| ---------- | -------- |
 | ![alipay](alipay.png) | ![wechat](wechat.png) |
