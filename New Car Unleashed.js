@@ -111,6 +111,37 @@ var profile2160 = {
     right: { x: 1170, y: 730 }
 }
 
+var profile2220 = {
+    compete: {
+        x: 1832,
+        y: 974
+    },
+
+    goldenPoint: {
+        x: 1700,
+        y: 1000
+    },
+
+    firstCar: {
+        x: 565,
+        y: 630
+    },
+
+    distance: {
+        x: 513,
+        y: 359
+    },
+
+    countdown: {
+        x: 139,
+        y: 309
+    },
+
+    left: { x: 961, y: 730 },
+
+    right: { x: 1170, y: 730 }
+}
+
 // var profile2246 = {
 //     //比赛
 //     compete: {
@@ -174,8 +205,11 @@ var profile;
 if (height === 1920 && width === 1080) {
     profile = profile1920;
 } 
-else if ((height === 2160 || height === 2220) && width === 1080) {
+else if ((height === 2160) && width === 1080) {
     profile = profile2160;
+}
+else if ((height === 2220) && width === 1080) {
+    profile = profile2220;
 }
 else if (height === 2340 && width === 1080) {
     profile = profile2340;
@@ -287,7 +321,7 @@ function afterRun() {
         var img = captureScreen();
 
         // 倒计时
-        var color_countdown = images.pixel(img, profile.countdown.x, profile.countdown.y);
+        var color_countdown = imagesPixel(img, profile.countdown.x, profile.countdown.y);
 
         // 粉红(在跑完之后会出现一闪而过的活动主页)
         if (colors.equals(color_countdown, "#ffff0054")) {
@@ -303,7 +337,7 @@ function afterRun() {
         var img = captureScreen();
 
         // 倒计时
-        var color_countdown = images.pixel(img, profile.countdown.x, profile.countdown.y);
+        var color_countdown = imagesPixel(img, profile.countdown.x, profile.countdown.y);
 
         // 粉红
         if (colors.equals(color_countdown, "#ffff0054")) {
@@ -329,7 +363,7 @@ function chooseCar() {
         }
         // toastLog(carPoint.x + ","+ carPoint.y);
         var img = captureScreen();
-        var carStatus = images.pixel(img, carPoint.x, carPoint.y);
+        var carStatus = imagesPixel(img, carPoint.x, carPoint.y);
 
         if (colors.equals(carStatus, "#ffc3fb12")) {
             flag = false;
@@ -358,7 +392,7 @@ function chooseCar() {
     }
 }
 
-function checkForResolution(x, y, img) {
+function imagesPixel(img, x, y){
     var width = img.getWidth();
     var height = img.getHeight();
     if (width < height) {
@@ -366,11 +400,7 @@ function checkForResolution(x, y, img) {
         x = y;
         y = e;
     }
-
-    return {
-        positionX: x,
-        positionY: y
-    };
+    return images.pixel(img,x,y);
 }
 
 
@@ -379,8 +409,8 @@ function ad() {
     while (true) {
         // confirm the UI
         var img = captureScreen();
-        var left = images.pixel(img, profile.left.x, profile.left.y);
-        var right = images.pixel(img, profile.right.x, profile.right.y);
+        var left = imagesPixel(img, profile.left.x, profile.left.y);
+        var right = imagesPixel(img, profile.right.x, profile.right.y);
         // toastLog("left is " + colors.toString(left));
         // toastLog("right is " + colors.toString(right));
         if (colors.equals(left, "#c3fb12") && colors.equals(right, "#ffffff")) {
@@ -406,9 +436,9 @@ function ad() {
         }
 
         var img = captureScreen();
-        var left = images.pixel(img, profile.left.x, profile.left.y);
-        var right = images.pixel(img, profile.right.x, profile.right.y);
-        var next = images.pixel(img, profile.goldenPoint.x, profile.goldenPoint.y);
+        var left = imagesPixel(img, profile.left.x, profile.left.y);
+        var right = imagesPixel(img, profile.right.x, profile.right.y);
+        var next = imagesPixel(img, profile.goldenPoint.x, profile.goldenPoint.y);
         // toastLog("left is " + colors.toString(left));
         // toastLog("right is " + colors.toString(right));
         // toastLog("next is " + colors.toString(next));
