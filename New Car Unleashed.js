@@ -275,7 +275,7 @@ function main() {
     toast("选车");
     sleep(700);
     chooseCar();
-    sleep(2000);
+    sleep(3000);
     click(profile.goldenPoint.x, profile.goldenPoint.y);
     click(profile.goldenPoint.x, profile.goldenPoint.y);
 
@@ -345,7 +345,7 @@ function afterRun() {
             break;
         } else {
             back();
-            sleep(2000);
+            sleep(3000);
         }
     }
 }
