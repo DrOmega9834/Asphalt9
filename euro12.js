@@ -633,7 +633,7 @@ function check_state() {
     if (/*colors.equals(goldenPoint, "#c3fb12") && colors.equals(token, "#0090ff") && colors.equals(credit, "#ffc600") &&*/ (colors.equals(recommendedPoints, "#c3fc0f") || colors.equals(credit, "#ff0054")))
         return 3;
     // 5 结算
-    if (colors.equals(goldenPoint, "#c3fb12") && !(colors.equals(recommendedPoints, "#c3fb12") || colors.equals(recommendedPoints, "#ff0054")))
+    if (colors.equals(goldenPoint, "#c3fb12") && !(colors.equals(recommendedPoints, "#c3fc0f") || colors.equals(recommendedPoints, "#ff0054")))
         return 5;
     // 7 升级
     if (colors.equals(upgrade, "#ffffff"))
