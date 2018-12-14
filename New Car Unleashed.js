@@ -102,8 +102,8 @@ var profile2160 = {
     },
 
     countdown: {
-        x: 160,
-        y: 224
+        x: 123,
+        y: 300
     },
 
     left: { x: 961, y: 730 },
