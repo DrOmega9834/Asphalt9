@@ -52,9 +52,9 @@ We have two scripts:
     * **7600 credits** per race, much more efficient than the euro script.
     * You had better max the first car to make sure be the winner.
     * Due to GL only makes tiny changes to "New Car Unleashed" series, you guys probably only need to  change some parameter to get this script work well for future usage.
-## Contact authors
+## Contact us
 * shuqin2333@gmail.com
-* 844095844@qq.com
+* omegadot9834@foxmail.com
 
 ## Donation
 If you think our scripts is helpful for you, you can donate us.
