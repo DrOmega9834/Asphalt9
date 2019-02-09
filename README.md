@@ -1,4 +1,5 @@
 # Asphalt 9 Scripts
+
 [中文版本说明](README_CH.md)
 
 ## Introductions
@@ -8,12 +9,12 @@
 * Please star this repo if you think it's useful for you.
 
 ## Device Requirement
-* Your device need root unless its Android version is above 7.0. (Including 7.0)
+* Your device need root unless its Android version is or higher than 7.0
 * Your device's screen resolution must be one of these followings:
   * **1920×1080**
   * **2160×1080**
   * **2220×1080**
-  * **2280×1080**
+  * **2280×1080** ( **NOT Available** after Dec 2018 )
   * **2340x1080**
 * If you want adaption for your device, please contact us with some pivotal screenshots.
   * If your reputation level is **NOT** 100, make sure you have the screenshot of reputation level up.

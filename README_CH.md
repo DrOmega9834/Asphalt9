@@ -11,7 +11,7 @@
   * **1920×1080**
   * **2160×1080**
   * **2220×1080**
-  * **2280×1080**
+  * **2280×1080**（2018年12月布加迪版本之后不可用）
   * **2340x1080**
 * 需流畅运行a9，若有卡顿可能会出现意料之外的问题.
 * 需在酷安下载Auto.js软件， [下载链接](https://www.coolapk.com/apk/org.autojs.autojs)，也可以前往auto.js的github[主页](https://github.com/hyb1996/Auto.js/releases)下载最新版Auto.js
