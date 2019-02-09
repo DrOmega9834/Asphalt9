@@ -62,7 +62,7 @@ var profile1920 = {
     goldenPoint: { x: 1500, y: 1000 },
 
     //生涯百分比
-    careerPercent: { x: 1630, y: 1050 },
+    careerPercent: { x: 1560, y: 1050 },
 
     //euro
     euro: { x: 350, y: 300 },
@@ -103,10 +103,10 @@ var profile2160 = {
     goldenPoint: { x: 1700, y: 1000 },
 
     // 生涯百分比
-    careerPercent: { x: 1776, y: 1023 },
+    careerPercent: { x: 1728, y: 1023 },
 
     // euro
-    euro: { x: 1700, y: 280 },
+    euro: { x: 1080, y: 280 },
 
     swipeScreen: function () {
         for (i = 0; i < 4; i++) {
@@ -145,10 +145,10 @@ var profile2220 = {
     goldenPoint: { x: 1700, y: 980 },
 
     //生涯百分比
-    careerPercent: { x: 1839, y: 1020 },
+    careerPercent: { x: 1803, y: 1020 },
 
     //euro
-    euro: { x: 1488, y: 276 },
+    euro: { x: 600, y: 270 },
 
     swipeScreen: function () {
         for (i = 0; i < 4; i++) {
@@ -267,10 +267,10 @@ var profile2340 = {
     goldenPoint: { x: 1800, y: 1000 },
 
     // 生涯百分比
-    careerPercent: { x: 1935, y: 1010 },
+    careerPercent: { x: 1850, y: 1010 },
 
     // euro
-    euro: { x: 1634, y: 282 },
+    euro: { x: 1800, y: 282 },
 
     swipeScreen: function () {
         for (i = 0; i < 4; i++) {
@@ -420,13 +420,10 @@ function afterRun(counter_loop) {
     sleep(69000);
     toastLog(++counter_loop + "场比赛已完成");
 
-    var counter_next = 0;
-    // 完成三次结算
-    while (counter_next <= 2) {
+    // 检查是否已经到达结算界面
+    while (true) {
         if (check_state() == 5) {
-            robot.click(profile.goldenPoint.x, profile.goldenPoint.y);
-            sleep(1500);
-            counter_next++;
+            break;
         }
         // 若未跑完仍可点击氮气
         else {
@@ -437,27 +434,18 @@ function afterRun(counter_loop) {
     }
     
     var counter_euro = 0;
-    while (counter_euro < 10) {
-        // 三次结算之后的状态
+    while (counter_euro < 15) {
+        // 检查是否返回euro界面
         switch(check_state()) {
-            // Euro
+            // 是Euro界面
             case 3:{
                 counter_euro++;
                 break;
             }
-            // 少点了继续
-            case 5:
-                robot.click(profile.goldenPoint.x, profile.goldenPoint.y);
-                break;
-            // 升级
-            case 7:{
-                robot.click(profile.upgrade.x, profile.upgrade.y);
-                toastLog("升级");
-                sleep(3000);
-                break;
-            }
-            // default:
-            //    toastLog("is Euro ?= "+ check_state());
+            // 否则模拟按下一次返回键
+            default:
+                robot.back();
+                sleep(3800);
         }
         sleep(200);
     }
@@ -533,21 +521,6 @@ function chooseCar() {
             break;
         }
     }
-}
-
-function checkForResolution(x, y, img) {
-    var width = img.getWidth();
-    var height = img.getHeight();
-    if (width < height) {
-        var temp = x;
-        x = y;
-        y = temp;
-    }
-
-    return {
-        positionX: x,
-        positionY: y
-    };
 }
 
 /**
