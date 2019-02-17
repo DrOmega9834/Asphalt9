@@ -66,9 +66,7 @@
     * 选择你想补充燃油的车辆，点击”跳过“，然后运行脚本
 
 ## 联系我们:
-shuqin2333@gmail.com
-
-omegadot9834@foxmail.com
+* omegadot9834@foxmail.com
 
 ## 捐赠：
 如果您觉得我的脚本有帮到您，您可以捐赠作者，您的捐赠将是我最大的动力.<br/>

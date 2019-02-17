@@ -63,7 +63,6 @@ We have two scripts working now:
 * Watch Advertisement
     * Choose the car which you want to refill its gas, and click **SKIP**, then run it.
 ## Contact us
-* shuqin2333@gmail.com
 * omegadot9834@foxmail.com
 
 ## Donation
@@ -72,3 +71,4 @@ If you think our scripts is helpful for you, you can donate us, your donation is
 | Alipay: | Wechat pay: |
 | ---------- | -------- |
 | ![alipay](alipay.png) | ![wechat](wechat.png) |
+

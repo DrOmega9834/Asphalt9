@@ -136,7 +136,7 @@ var profile2160 = {
 var profile2220 = {
     
     // 最上方代币图标
-    token: { x: 1068 , y: 50 },
+    token: { x: 1062 , y: 50 },
 
     // 最上方积分图标
     credit: { x: 1386 , y: 50 },
@@ -600,10 +600,10 @@ function check_state() {
     var upgrade = images.pixel(img, profile.upgrade.x, profile.upgrade.y);
 
     // 1 主页
-    if (!colors.equals(goldenPoint, "#c3fb12") && colors.equals(token, "#0090ff") && colors.equals(credit, "#ffc600"))
+    if (!colors.equals(goldenPoint, "#c3fb12") && colors.equals(token, "#0090ff") && colors.isSimilar(credit, "#ffc600", 2, "diff"))
         return 1;
     // 3 EURO
-    if (/*colors.equals(goldenPoint, "#c3fb12") && colors.equals(token, "#0090ff") && colors.equals(credit, "#ffc600") &&*/ (colors.equals(recommendedPoints, "#c3fc0f") || colors.equals(credit, "#ff0054")))
+    if (colors.equals(recommendedPoints, "#c3fc0f") || colors.equals(credit, "#ff0054"))
         return 3;
     // 5 结算
     if (colors.equals(goldenPoint, "#c3fb12") && !(colors.equals(recommendedPoints, "#c3fc0f") || colors.equals(recommendedPoints, "#ff0054")))
