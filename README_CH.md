@@ -1,0 +1,1 @@
+<a href = "https://github.com/Dr-Omega9834/Asphalt9/blob/master/README_CN.md">点击此处打开说明文档。<br/>Click here to read instructions.</a>

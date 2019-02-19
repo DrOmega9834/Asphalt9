@@ -4,7 +4,7 @@
 
 ## Thanks to <a href = "https://github.com/zlsq">zlsq</a> specially
 
-* <a href = "https:github.com/zlsq/A9">His repository.</a>
+* <a href = "https://github.com/zlsq/A9">His repository.</a>
 
 ## Introductions
 * Automatically racing and getting credits.
