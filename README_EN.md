@@ -1,8 +1,8 @@
 # Asphalt 9 Scripts
 
-## Thanks to <a href = "https://github.com/zlsq">zlsq</a> specially
+## Thanks to <a href = "https://github.com/zlsq" target = "_blank">zlsq</a> specially
 
-* <a href = "https://github.com/zlsq/A9">His repository.</a>
+* <a href = "https://github.com/zlsq/A9" target = "_blank">His repository.</a>
 
 ## Introductions
 * Automatically racing and getting credits.
