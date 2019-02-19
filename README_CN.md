@@ -1,4 +1,9 @@
 # 狂野飙车 9 挂机脚本
+
+## 特别感谢：<a href = "https://github.com/zlsq">zlsq</a>
+
+* <a href = "https://github.com/zlsq/A9">他的仓库</a>
+
 ## 简介
 * 狂野飙车9自动刷金币脚本
 * 使用Auto.js作为开发平台

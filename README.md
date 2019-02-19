@@ -1,6 +1,10 @@
 # Asphalt 9 Scripts
 
-[中文版本说明](README_CH.md)
+[中文版本说明](README_CN.md)
+
+## Thanks to <a href = "https://github.com/zlsq">zlsq</a> specially
+
+* <a href = "https:github.com/zlsq/A9">His repository.</a>
 
 ## Introductions
 * Automatically racing and getting credits.
