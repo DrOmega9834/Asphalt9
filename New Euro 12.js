@@ -1,6 +1,6 @@
 // const profile = require('profile1920.js');
 // const robot = require('robot.js');
-const DEVICE = require('device.js').carrer;
+const DEVICE = require('device.js');
 const play = require('play.js').carrer;
 var counter_carrer = 0;
 

@@ -2,7 +2,7 @@
 // 填写车的编号,1920*1080分辨率下最多6张车循环,按填写先后顺序用车
 
 const cars = [1, 2, 3, 4, 5, 6];
-const profile = require('profile1920.js');
+const profile = require('profile1920.js').carrer;
 const robot = require('robot.js');
 const DEVICE = require('device.js');
 DEVICE.checkPermission();
