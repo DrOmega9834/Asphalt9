@@ -2,8 +2,8 @@
 
 const robot = require('robot.js');
 
-function Profile() {
-    var p = {
+module.exports = {
+    carrer: {
 
         // 分辨率宽度
         width : 1920,
@@ -47,8 +47,4 @@ function Profile() {
         distance: { x: 519, y: 365 },
     
     }
-    return p;
 } 
-
-var profile = new Profile(); 
-module.exports = profile;

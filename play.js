@@ -7,8 +7,9 @@ const robot = require('robot.js');
 const DEVICE = require('device.js');
 DEVICE.checkPermission();
 
-function Play() {
-    var p = {
+module.exports = {
+    
+    carrer: {
 
         /**
          * 非循环部分
@@ -135,12 +136,7 @@ function Play() {
             toastLog("即将开始下一场比赛");
         }
     }
-
-    return p;
 }
-
-var pl = new Play();
-module.exports = pl;
 
 function checkState() {
     var state = -1;

@@ -6,9 +6,9 @@ const isAutoBrightnessMode = device.getBrightnessMode();
 const previousBrightness = device.getBrightness();
 const previousMusicVolume = device.getMusicVolume();
 
-function Device() {
+module.exports = {
 
-    var d = {
+    carrer: {
         /**
          * 监听“音量下”键
          */
@@ -47,10 +47,7 @@ function Device() {
             device.setBrightness(targetBrightness);
             device.setMusicVolume(targetMediaVolume);
         },
-
-    }    
-
-    return d;
+    }
 }
 
 /**
@@ -61,6 +58,3 @@ revertPower = () => {
     isAutoBrightnessMode ? device.setBrightnessMode(autoBrightnessMode) : device.setBrightness(previousBrightness);
     device.setMusicVolume(previousMusicVolume); 
 }
-
-var de = new Device();
-module.exports = de;
