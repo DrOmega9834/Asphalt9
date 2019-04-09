@@ -30,7 +30,7 @@ module.exports = {
      */
     checkPermission : () => {
         auto();
-        if (!requestScreenCapture()) {
+        if (!requestScreenCapture(true)) {
             toastLog('请求截图失败，程序结束');
             exit();
         }
