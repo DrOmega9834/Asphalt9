@@ -1,31 +1,12 @@
-// 选择可用的车,第一列第一张编号为1,第一列第二张为2,第二列第一张为3,依次递增.可根据自己需求修改
-// 填写车的编号,1920*1080分辨率下最多6张车循环,按填写先后顺序用车
-
-/*********************** 生涯用车 ******************************/
-const cars = [1, 2, 3, 4, 5, 6];
-/*********************** 生涯用车 ******************************/
-
-/*********************** 多人用车 ******************************/
-const level = ['legend', 'platinum', 'gold', 'silver', 'bronze'];
-// 传奇、白金、黄金、白银、青铜的车是否可用，true表示可用，false表示不可用
-const status = [false, false, false, true, true];
-const carPick = {
-    // 传奇
-    legend: [1, 2],
-    // 白金
-    platinum: [1, 2, 3, 4],
-    // 黄金
-    gold: [1, 2, 3, 4],
-    // 白银
-    silver: [1, 2, 3, 4],
-    // 青铜
-    bronze: [1, 2, 3, 4]
-}
-/*********************** 多人用车 ******************************/
-
 const profile = require('profile1920.js');
+const cars = profile.carrer.cars;
+const levelName = profile.mp.levelName;
+const status = profile.mp.status;
+const carPick = profile.mp.carPick;
+
 const robot = require('robot.js');
 const DEVICE = require('device.js');
+
 DEVICE.checkPermission();
 
 module.exports = {
@@ -168,20 +149,17 @@ module.exports = {
             while (!Flag){
                 switch(mpCheckState()){
                     case 1: {
-                        log('index')
                         // 点击多人按钮
                         robot.click(profile.mp.multiplayer.x, profile.mp.multiplayer.y);
                         sleep(3000);
                         break;
                     }
                     case 3: {
-                        log('start')
                         Flag = true;
                         sleep(2000);
                         break;
                     }
                     default: {
-                        log('default')
                         sleep(1000);
                     }
                 }
@@ -194,14 +172,12 @@ module.exports = {
          */
         chooseCar() {
             robot.click(profile.mp.start.x, profile.mp.start.y);
-            sleep(3000);
+            sleep(4000);
             var FOUND = false;
-            for (let i = 0; i < 5; i++){
+            for (let i = 0; i < 5 && !FOUND; i++){
                 if (status[i]){
-                    LV = level[i];
-                    if (hasFuel(LV)){
+                    if (hasFuel(levelName[i])){
                         FOUND = true;
-                        break;
                     }
                 }
             }
@@ -212,7 +188,7 @@ module.exports = {
                 return true;
             }
             else {
-                toastLog("无油。\nNo fuel.");
+                toastLog("\n无油。\nNo fuel.");
                 return false;
             }
         },
@@ -235,7 +211,7 @@ module.exports = {
                     // toastLog("isNext ?= " + checkState());
                 }
             }
-            toastLog(++counter_mp + "场比赛已完成");
+            toastLog(++counter_mp + "场多人比赛已完成");
             
             var counterStart = 0;
             while (counterStart < 15) {
@@ -363,30 +339,30 @@ function mpCheckState() {
     
     // 代币
     var token = images.pixel(img, profile.mp.token.x, profile.mp.token.y);
-    log('token '+colors.toString(token))
+    // log('token '+colors.toString(token))
     var isToken = colors.equals(token, "#0090ff");
-    log('isToken '+isToken)
+    // log('isToken '+isToken)
 
     // 积分
     var credit = images.pixel(img, profile.mp.credit.x, profile.mp.credit.y);
-    log('credit '+colors.toString(credit))
+    // log('credit '+colors.toString(credit))
     var isCredit = colors.equals(credit, "#ffc600");
-    log('isCredit '+isCredit)
+    // log('isCredit '+isCredit)
     
     // 多人开始按钮
     var start = images.pixel(img, profile.mp.start.x, profile.mp.start.y);
-    log('start '+colors.toString(start))
+    // log('start '+colors.toString(start))
     var isStart = colors.equals(start, "#c3fb12");
-    log('isStart '+isStart)
+    // log('isStart '+isStart)
 
     // 继续按钮
     var next = images.pixel(img, profile.mp.goldenPoint.x, profile.mp.goldenPoint.y);
     var isNext = colors.equals(next, "#c3fb12");
-    log('isNext '+isNext)
+    // log('isNext '+isNext)
 
     var claim = images.pixel(img, profile.mp.claim.x, profile.mp.claim.y);
     var isClaim = colors.equals(claim, "#fdd901");
-    log('isClaim'+ isClaim)
+    // log('isClaim'+ isClaim)
 
     // 1 主页
     if (isToken && isCredit && !isStart)
