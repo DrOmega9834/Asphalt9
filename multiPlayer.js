@@ -13,9 +13,9 @@ sleep(4000);
 DEVICE.checkPermission();
 DEVICE.setEventListener();
 DEVICE.savePower();
-PLAY.beforeRun();
 
 for (;;counterMP++) {
+    PLAY.beforeRun();
     if(PLAY.chooseCar()){
         sleep(12000);
         PLAY.run(counterMP);

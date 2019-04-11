@@ -23,7 +23,7 @@ var mpStatus = [
 ];
 var mpCarPick = {
     // 传奇
-    legend: [1, 2],
+    legend: [1, 2, 3, 4],
     // 白金
     platinum: [1, 2, 3, 4],
     // 黄金
@@ -108,13 +108,13 @@ module.exports = {
         credit: { x: 1203, y: 42 },
 
         // 多人块
-        multiplayer: { x: 795, y: 990},
+        multiplayer: { x: 690, y: 1050},
 
         // 开始按钮
-        start: { x: 999, y: 963 },
+        start: { x: 960, y: 999 },
 
         // 领奖按钮
-        claim: { x: 915, y: 1011},
+        claim: { x: 960, y: 750 },
         
         // 青铜
         bronze: { x: 1290, y: 168 },

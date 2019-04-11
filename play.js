@@ -145,23 +145,43 @@ module.exports = {
          */
         beforeRun() {
             var Flag = false;
-            // 判断是否从主页开始
+            // 判断是否是否已经到达开始界面
             while (!Flag){
                 switch(mpCheckState()){
+                    // 游戏主界面
                     case 1: {
                         // 点击多人按钮
+                        log('index')
                         robot.click(profile.mp.multiplayer.x, profile.mp.multiplayer.y);
-                        sleep(3000);
-                        break;
-                    }
-                    case 3: {
-                        Flag = true;
                         sleep(2000);
                         break;
                     }
-                    default: {
-                        sleep(1000);
+                    // 多人开始界面
+                    case 3: {
+                        log('start')
+                        Flag = true;
+                        break;
                     }
+                    // 结算界面
+                    case 5: {
+                        log('result')
+                        robot.back();
+                        sleep(3950);
+                    }
+                    // 打满了 5 / 10 / 20 个奖杯
+                    case 7: {
+                        log('claim')
+                        robot.click(profile.mp.claim.x, profile.mp.claim.y);
+                        sleep(2000);
+                        break;
+                    }
+                    // 否则暂时停止运行
+                    default: {
+                        log('default')
+                        robot.back();
+                        sleep(5950);
+                    }
+                        
                 }
                 sleep(100);
             }
@@ -198,7 +218,7 @@ module.exports = {
          * @param {number} counter_mp 已完成的多人比赛次数 
          */
         run(counter_mp) {
-            
+            var left = 0;
             // 检查是否已经到达结算界面
             while (true) {
                 if (mpCheckState() == 5) {
@@ -207,42 +227,17 @@ module.exports = {
                 // 若未跑完仍可点击氮气
                 else {
                     robot.click(profile.mp.width * 4 / 5, profile.mp.height / 2);
-                    sleep(1000);
+                    if (left == 5){
+                        left = 0;
+                        robot.click(profile.mp.width * 3 / 10, profile.mp.height / 2);
+                        sleep(400);
+                        robot.click(profile.mp.width * 3 / 10, profile.mp.height / 2);
+                    }
+                    sleep(950);
                     // toastLog("isNext ?= " + checkState());
                 }
             }
-            toastLog(++counter_mp + "场多人比赛已完成");
-            
-            var counterStart = 0;
-            while (counterStart < 15) {
-                // 检查是否返回多人界面
-                switch(mpCheckState()) {
-                    // 多人开始界面
-                    case 3: {
-                        counterStart++;
-                        break;
-                    }
-                    // 游戏主界面
-                    case 1: {
-                        // 点击多人按钮
-                        robot.click(profile.mp.multiplayer.x, profile.mp.multiplayer.y);
-                        sleep(3000);
-                        return ;
-                    }
-                    // 打满了 5 / 10 / 20 个奖杯
-                    case 7: {
-                        robot.click(profile.mp.claim.x, profile.mp.claim.y);
-                        sleep(2000);
-                        break;
-                    }
-                    // 否则模拟按下一次返回键
-                    default:
-                        robot.back();
-                        sleep(7950);
-                }
-                sleep(50);
-            }
-            toastLog("即将开始下一场比赛");
+            toastLog(++counter_mp + "场多人比赛已完成。\n即将开始下一场比赛。");
         }
     }
 }
@@ -341,7 +336,9 @@ function mpCheckState() {
     var token = images.pixel(img, profile.mp.token.x, profile.mp.token.y);
     // log('token '+colors.toString(token))
     var isToken = colors.equals(token, "#0090ff");
+    var isTokenClaim = colors.equals(token, "#0492fa");
     // log('isToken '+isToken)
+    // log('isTokenClaim '+isTokenClaim)
 
     // 积分
     var credit = images.pixel(img, profile.mp.credit.x, profile.mp.credit.y);
@@ -374,7 +371,7 @@ function mpCheckState() {
     else if (isNext && !isCredit && !isToken)
         state = 5;
     // 7 5/10/20奖杯包
-    else if (isToken && isCredit && isClaim)
+    else if (isTokenClaim && isCredit && isClaim)
         state = 7;
     
     return state;
