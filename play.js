@@ -335,10 +335,8 @@ function mpCheckState() {
     // 代币
     var token = images.pixel(img, profile.mp.token.x, profile.mp.token.y);
     // log('token '+colors.toString(token))
-    var isToken = colors.equals(token, "#0090ff");
-    var isTokenClaim = colors.equals(token, "#0492fa");
+    var isToken = colors.equals(token, "#0090ff") || colors.equals(token, "#0392fb") || colors.equals(token, "#0492fa");
     // log('isToken '+isToken)
-    // log('isTokenClaim '+isTokenClaim)
 
     // 积分
     var credit = images.pixel(img, profile.mp.credit.x, profile.mp.credit.y);
@@ -362,7 +360,7 @@ function mpCheckState() {
     // log('isClaim'+ isClaim)
 
     // 1 主页
-    if (isToken && isCredit && !isStart)
+    if (isToken && isCredit && !isStart && !isClaim)
         state = 1;
     // 3 多人开始
     else if (isToken && isCredit && isStart)
@@ -371,7 +369,7 @@ function mpCheckState() {
     else if (isNext && !isCredit && !isToken)
         state = 5;
     // 7 5/10/20奖杯包
-    else if (isTokenClaim && isCredit && isClaim)
+    else if (isToken && isCredit && isClaim)
         state = 7;
     
     return state;
