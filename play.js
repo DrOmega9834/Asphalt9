@@ -356,7 +356,7 @@ function mpCheckState() {
     // log('isNext '+isNext)
 
     var claim = images.pixel(img, profile.mp.claim.x, profile.mp.claim.y);
-    var isClaim = colors.equals(claim, "#fdd901");
+    var isClaim = colors.isSimilar(claim, "#fdd901", 8, "diff");
     // log('isClaim'+ isClaim)
 
     // 1 主页
