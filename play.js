@@ -227,6 +227,9 @@ module.exports = {
                 // 若未跑完仍可点击氮气
                 else {
                     robot.click(profile.mp.width * 4 / 5, profile.mp.height / 2);
+                    robot.swipe(profile.mp.height * 5 / 8, profile.mp.width / 2, 
+                        profile.mp.height * 7 / 8, profile.mp.width / 2, 
+                        300);
                     if (left == 5){
                         left = 0;
                         robot.click(profile.mp.width * 3 / 10, profile.mp.height / 2);
