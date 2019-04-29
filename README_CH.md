@@ -29,7 +29,7 @@
 * 安卓7.0版本及以上无需ROOT权限，其余安卓版本需要ROOT
 * 手机分辨率必须为**1920×1080**
 * **2160×1080**分辨率接下来会适配
-* 如果您的手机分辨率不在上述之列，又需要脚本的话，请<a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.0/Scripts.zip">点击此处下载截图示例</a>，参照我的截图示例，带上您的截图原图发邮件私戳我
+* 如果您的手机分辨率不在上述之列，又需要脚本的话，请<a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.0/Screenshots.zip">点击此处下载截图示例</a>，参照我的截图示例，带上您的截图原图发邮件私戳我
 * 需流畅运行a9，若有卡顿可能会出现意料之外的问题
 
 ### 游戏内条件
