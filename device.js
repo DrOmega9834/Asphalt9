@@ -11,10 +11,11 @@ module.exports = {
      * 监听“音量下”键
      */
     setEventListener : () => {
-        threads.start(function () {
+        // 手动退出
+        threads.start(function() {
             // 启用按键监听
             events.observeKey();
-            // 监听音量上键按下
+            // 监听音量下键按下
             events.onKeyDown("volume_down", function (event) {
                 log("程序即将退出");
                 revertPower();

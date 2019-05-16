@@ -10,13 +10,10 @@ toast("开局可能会弹广告,请自己手动关掉,直至保证程序正常�
 DEVICE.checkPermission();
 DEVICE.setEventListener();
 DEVICE.savePower();
-// 选关卡
-PLAY.beforeRun();
 var counterCarrer = 0;
-
-for (;;counterCarrer++) {
+setInterval(() => {
     // 选择关卡
-    PLAY.chooseMode(counterCarrer);
+    PLAY.chooseMode();
     sleep(2000);
 
     // 选车
@@ -24,5 +21,36 @@ for (;;counterCarrer++) {
     sleep(6000);
 
     // 跑完之后
-    PLAY.run(counterCarrer);
-}
+    counterCarrer = PLAY.run(counterCarrer);
+}, 1000);
+/*
+// 游戏闪退监听
+var isA9 = true;
+setInterval(function() {
+    if(currentPackage() != "com.gameloft.android.ANMP.GloftA9HM") {
+        isA9 = false;
+        clearTimeout(game);
+        toastLog("游戏闪退");
+        launch("com.gameloft.android.ANMP.GloftA9HM");
+        waitingForActivty("com.gameloft.android.ANMP.GloftA9HM.MainActivity", 500);
+        isA9 = true;
+    }
+}, 500)
+
+// 主线程循环
+var counterCarrer = 0;
+while(isA9) {
+    var game = setTimeout(function(){
+        // 选择关卡
+        PLAY.chooseMode(counterCarrer);
+        sleep(2000);
+    
+        // 选车
+        PLAY.chooseCar();
+        sleep(6000);
+    
+        // 跑完之后
+        counterCarrer = PLAY.run(counterCarrer);
+    }, 1000);
+    sleep(100000);
+}*/

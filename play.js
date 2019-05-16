@@ -43,22 +43,39 @@ module.exports = {
 
         /**
          * 选择关卡
-         * @param {Number} counter_carrer 已完成的生涯比赛次数
          */
-        chooseMode(counter_carrer) {
-            if (!counter_carrer){
-                while (true){
-                    if (carrerCheckState() == 3){
-                        toast("选择关卡");
+        chooseMode() {
+            var Flag = false;
+            while (!Flag){
+                switch(carrerCheckState()) {
+                    // 主页
+                    case 1: {
+                        log('Index')
+                        this.beforeRun();
                         break;
                     }
-                    else {
+                    // Euro界面
+                    case 3: {
+                        log('Euro')
+                        Flag = true;
+                        break;
+                    }
+                    // 结算
+                    case 5: {
+                        log('Result')
+                        robot.back();
+                        sleep(3950);
+                        break;
+                    }
+                    default: {
                         log("isEuro ?= " + carrerCheckState());
-                        sleep(200);
+                        robot.back();
+                        sleep(5950);
                     }
                 }
+                sleep(100);
             }
-            
+            toast("选择12关")
             sleep(700);
             profile.carrer.swipeScreen();
 
@@ -117,24 +134,7 @@ module.exports = {
                 }
             }
             toastLog(++counter_carrer + "场比赛已完成");
-            
-            var counter_euro = 0;
-            while (counter_euro < 15) {
-                // 检查是否返回euro界面
-                switch(carrerCheckState()) {
-                    // 是Euro界面
-                    case 3:{
-                        counter_euro++;
-                        break;
-                    }
-                    // 否则模拟按下一次返回键
-                    default:
-                        robot.back();
-                        sleep(3800);
-                }
-                sleep(200);
-            }
-            toastLog("即将开始下一场比赛");
+            return counter_carrer;
         }
     },
 
@@ -227,9 +227,9 @@ module.exports = {
                 // 若未跑完仍可点击氮气
                 else {
                     robot.click(profile.mp.width * 4 / 5, profile.mp.height / 2);
-                    robot.swipe(profile.mp.height * 5 / 8, profile.mp.width / 2, 
+                    /* robot.swipe(profile.mp.height * 5 / 8, profile.mp.width / 2, 
                         profile.mp.height * 7 / 8, profile.mp.width / 2, 
-                        300);
+                    300); */
                     if (left == 5){
                         left = 0;
                         robot.click(profile.mp.width * 3 / 10, profile.mp.height / 2);
@@ -304,19 +304,37 @@ function carrerCheckState() {
     var img = captureScreen();
     
     // 若干点的颜色值
-    var token = images.pixel(img, profile.carrer.token.x, profile.carrer.token.y);
-    var credit = images.pixel(img, profile.carrer.credit.x, profile.carrer.credit.y);
-    var goldenPoint = images.pixel(img, profile.carrer.goldenPoint.x, profile.carrer.goldenPoint.y);
+
+    // 代币
+    var token = images.pixel(img, profile.mp.token.x, profile.mp.token.y);
+    // log('token '+colors.toString(token))
+    var isToken = colors.equals(token, "#0090ff") || colors.equals(token, "#0392fb") || colors.equals(token, "#0492fa");
+    // log('isToken ' + isToken)
+
+    // 积分
+    var credit = images.pixel(img, profile.mp.credit.x, profile.mp.credit.y);
+    // log('credit '+colors.toString(credit))
+    var isCredit = colors.isSimilar(credit, "#ffc600", 2, "diff");
+    // log('isCredit ' + isCredit)
+
+    // 继续按钮
+    var next = images.pixel(img, profile.mp.goldenPoint.x, profile.mp.goldenPoint.y);
+    var isNext = colors.equals(next, "#c3fb12");
+    // log('isNext ' + isNext)
+
+    // 推荐性能分
     var recommendedPoints = images.pixel(img, profile.carrer.recommendedPoints.x, profile.carrer.recommendedPoints.y);
+    var isReco = colors.equals(recommendedPoints, "#c3fc0f") || colors.equals(recommendedPoints, "#ff0054");
+    // log('isNext ' + isNext)
 
     // 1 主页
-    if (!colors.equals(goldenPoint, "#c3fb12") && colors.equals(token, "#0090ff") && colors.isSimilar(credit, "#ffc600", 2, "diff"))
+    if (!isNext && isToken && isCredit)
         return 1;
     // 3 EURO
-    if (colors.equals(recommendedPoints, "#c3fc0f") || colors.equals(recommendedPoints, "#ff0054"))
+    if (isReco)
         return 3;
     // 5 结算
-    if (colors.equals(goldenPoint, "#c3fb12") && !(colors.equals(recommendedPoints, "#c3fc0f") || colors.equals(recommendedPoints, "#ff0054")))
+    if (isNext && !isReco)
         return 5;
     /*
     toastLog("goldenPoint is " + colors.toString(goldenPoint));
@@ -339,28 +357,28 @@ function mpCheckState() {
     var token = images.pixel(img, profile.mp.token.x, profile.mp.token.y);
     // log('token '+colors.toString(token))
     var isToken = colors.equals(token, "#0090ff") || colors.equals(token, "#0392fb") || colors.equals(token, "#0492fa");
-    // log('isToken '+isToken)
+    // log('isToken ' + isToken)
 
     // 积分
     var credit = images.pixel(img, profile.mp.credit.x, profile.mp.credit.y);
     // log('credit '+colors.toString(credit))
     var isCredit = colors.equals(credit, "#ffc600");
-    // log('isCredit '+isCredit)
+    // log('isCredit ' + isCredit)
     
     // 多人开始按钮
     var start = images.pixel(img, profile.mp.start.x, profile.mp.start.y);
     // log('start '+colors.toString(start))
     var isStart = colors.equals(start, "#c3fb12");
-    // log('isStart '+isStart)
+    // log('isStart ' + isStart)
 
     // 继续按钮
     var next = images.pixel(img, profile.mp.goldenPoint.x, profile.mp.goldenPoint.y);
     var isNext = colors.equals(next, "#c3fb12");
-    // log('isNext '+isNext)
+    // log('isNext ' + isNext)
 
     var claim = images.pixel(img, profile.mp.claim.x, profile.mp.claim.y);
     var isClaim = colors.isSimilar(claim, "#fdd901", 8, "diff");
-    // log('isClaim'+ isClaim)
+    // log('isClaim ' + isClaim)
 
     // 1 主页
     if (isToken && isCredit && !isStart && !isClaim)
