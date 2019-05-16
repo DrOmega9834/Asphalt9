@@ -13,7 +13,7 @@
 * 生涯脚本每小时能完成33场比赛，即每小时能获取8万金币
 * 多人脚本每小时能完成24场比赛，声望请自行计算
 * 欢迎使用和提交bug反馈
-* 如果您觉得脚本好用，请点个star
+* 如果您觉得脚本好用，请点个star或者拉到底部捐赠作者
 
 ## 目录
 
@@ -27,8 +27,12 @@
 ### 设备条件
 
 * 安卓7.0版本及以上无需ROOT权限，其余安卓版本需要ROOT
-* 手机分辨率必须为**1920×1080**
-* **2160×1080**分辨率接下来会适配
+* 支持如下分辨率：
+  * 1920×1080
+  * 2160×1080
+  * 2244×1080
+  * 2246×1080
+  * 2248×1080
 * 如果您的手机分辨率不在上述之列，又需要脚本的话，请<a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.0/Screenshots.zip">点击此处下载截图示例</a>，参照我的截图示例，带上您的截图原图发邮件私戳我
 * 需流畅运行a9，若有卡顿可能会出现意料之外的问题
 
@@ -40,35 +44,55 @@
   * 所用车辆必须性能分足够（足够是指在指定时间内能在自动驾驶的情况下通过一直点击氮气达成目标）
 
 ## 小白/萌新安装教程
-1. **阅读完上述“使用条件“！** 
-2. **阅读完上述“使用条件“！** 
-3. **阅读完上述“使用条件“！** 
-4. 点击以下链接下载并安装Auto.js 4.0.4 Alpha 6 版本
-    * <a href="https://github.com/hyb1996/Auto.js/releases/download/4.0.4Alpha6/commonRelease-4.0.4.Alpha6.apk">Auto.js下载链接</a>
-    * 本脚本不能在 Auto.js 4.0.5 Alpha 版本上运行，运行时报错"redeclaration"
-5. 点击以下链接，下载并导入脚本
 
-    * <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.0/Scripts.zip">脚本下载链接</a>
-    * 下载下来是一个zip压缩包，解压之后，把里面的全部文件导入到Auto.js中
-    * **务必注意保证这些文件的文件名不变**
-    * 请确认脚本全部都导入后开始下一步
-6. 调整参数（参见脚本详细说明）
-    * 后续更新会做一个交互界面和用户互动，避免用户去自行调整脚本
-7. 开始运行脚本
+##### 阅读完上述“使用条件“！ 
 
-    * **New Euro 12.js 是生涯脚本**
+##### 阅读完上述“使用条件“！
 
-    * **multiPlayer.js 是多人脚本**
-    * 其他脚本直接运行都会报错，只能运行上面两个脚本
-    * 推荐打开auto.js的悬浮窗，这样就可以直接在悬浮窗中点击运行脚本了
-    * 如若没开悬浮窗，则切出游戏界面至auto.js界面，立即切回游戏中， 等待脚本运行
-8. 停止运行脚本
+##### 阅读完上述“使用条件“！
 
-    * 按下**音量下键**即可立即停止运行脚本，也可以按电源键关闭屏幕
-    * 也可以打开Auto.js设置项中的“音量上键停止脚本”，之后用音量上停止运行
+##### 点击以下链接下载并安装Auto.js 4.0.4 Alpha 6 版本
 
-    * 除此以外脚本不会自动停止
-    * **若没有手动停止脚本运行而直接触摸屏幕，则会有可能性切换到商店中的代币购买金币界面造成代币亏损（前人的血泪史啊）**
+* <a href="https://github.com/hyb1996/Auto.js/releases/download/4.0.4Alpha6/commonRelease-4.0.4.Alpha6.apk">Auto.js下载链接</a>
+* **本脚本不能在 Auto.js 4.0.5 Alpha 版本上运行，运行时报错"redeclaration"**
+
+##### 点击以下链接，下载并导入脚本，*如有和以前重复，先删除旧文件再导入*
+
+* <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.1/device.js">device.js</a>
+* <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.1/multiplayer.js">multiplayer.js</a>
+* <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.1/New.Euro.12.js">New Euro 12.js</a>
+* <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.1/play.js">play.js</a>
+* 以下三个分辨率文件下载自己手机对应的那个就可以了，，非1920×1080分辨率的在导入时注意将文件名改为1920
+  * <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.1/profile1920.js">profile1920.js</a>
+  * <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.1/profile2160.js">profile2160.js</a>
+  * <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.1/profile2248.js">profile2248.js（2244/2246/2248的都下载这个）</a>
+* <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.1/robot.js">robot.js</a>
+* 除profile以外的其他文件导入时均需要保证文件名不变
+* 请确认脚本全部都导入后开始下一步
+
+##### 调整参数（参见脚本详细说明）
+
+* 后续更新会做一个交互界面和用户互动，避免用户去自行调整脚本
+
+##### 开始运行脚本
+
+* New Euro 12.js 是生涯脚本
+
+* multiPlayer.js 是多人脚本
+
+* 其他脚本直接运行都会报错，只能运行上面两个脚本
+
+* 推荐打开auto.js的悬浮窗，这样就可以直接在悬浮窗中点击运行脚本了
+
+* 如若没开悬浮窗，则切出游戏界面至auto.js界面，立即切回游戏中， 等待脚本运行
+
+##### 停止运行脚本
+
+* 按下**音量下键**即可立即停止运行脚本，也可以按电源键关闭屏幕
+* 也可以打开Auto.js设置项中的“音量上键停止脚本”，之后用音量上停止运行
+
+* 除此以外脚本不会自动停止
+* **若没有手动停止脚本运行而直接触摸屏幕，则会有可能性切换到商店中的代币购买金币界面造成代币亏损（前人的血泪史）**
 
 ## 脚本详细说明
 * 脚本运行后会设置屏幕亮度为0，媒体音量为0，是正常现象，手动停止脚本会重置音量和亮度为开始运行脚本之前的状态。
@@ -115,6 +139,7 @@
 
 ## 联系我们:
 * omegadot9834@foxmail.com
+* **先看完这篇说明再问问题**
 
 ## 捐赠：
 如果您觉得我的脚本有帮到您，您可以捐赠作者，您的捐赠将是我最大的动力.<br/>
