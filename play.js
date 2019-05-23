@@ -84,7 +84,7 @@ module.exports = {
             sleep(800);
             // 选择第12关
             robot.click(profile.carrer.block12.x, profile.carrer.block12.y);
-
+            sleep(1000);
             // 继续
             robot.click(profile.carrer.goldenPoint.x, profile.carrer.goldenPoint.y);
         },
