@@ -48,12 +48,12 @@ module.exports = {
             var Flag = false;
             while (!Flag){
                 switch(carrerCheckState()) {
-                    // 主页
+                    /* 主页
                     case 1: {
                         log('Index')
                         this.beforeRun();
                         break;
-                    }
+                    } */
                     // Euro界面
                     case 3: {
                         log('Euro')
@@ -69,7 +69,7 @@ module.exports = {
                     }
                     default: {
                         log("isEuro ?= " + carrerCheckState());
-                        robot.back();
+                        // robot.back();
                         sleep(5950);
                     }
                 }
