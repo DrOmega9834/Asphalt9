@@ -56,7 +56,7 @@ module.exports = {
         credit: { x: 1366 , y: 66 },
     
         // 生涯,开始,继续
-        goldenPoint: { x: 1665, y: 1000 },
+        goldenPoint: { x: 1905, y: 1026 },
     
         // 生涯百分比
         careerPercent: { x: 1990, y: 1024 },
@@ -132,7 +132,7 @@ module.exports = {
         legend: { x: 2058, y: 231 },
 
         // 生涯,开始,继续
-        goldenPoint: { x: 1992, y: 900 },
+        goldenPoint: { x: 1905, y: 1026 },
 
         // 第一辆车
         firstCar: { x: 738, y: 625 },
