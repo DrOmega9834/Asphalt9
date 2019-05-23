@@ -5,7 +5,7 @@ const PLAY = require('play.js').mp;
 const robot = require('robot.js');
 var counterMP = 0;
 
-toast("3秒后将开始运行程序,请迅速切换至游戏主界面");
+toast("7秒后将开始运行程序,请迅速切换至游戏主界面");
 sleep(3000);
 toast("开局可能会弹广告,请自己手动关掉,直至保证程序正常选关为止");
 sleep(4000);
