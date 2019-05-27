@@ -77,7 +77,10 @@ module.exports = {
             }
             toast("选择12关")
             sleep(700);
-            profile.carrer.swipeScreen();
+            
+            // 这个部分没有用，做了调整
+            // profile.carrer.swipeScreen();
+            robot.click(profile.carrer.block12X.x, profile.carrer.block12X.y);
 
             // toastLog("请在此处截图,截图时不要滑动屏幕");
             // exit();
