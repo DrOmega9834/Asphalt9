@@ -22,7 +22,7 @@
 * 脚本详细说明（遇到问题先看这个，确认看完了不能解决再问我）
 * 捐赠
 
-## 使用条件（必看，不满足的请不要问我为什么不能运行）
+## 不能使用的时候，首先查看使用条件
 
 ### 设备条件
 
@@ -58,15 +58,15 @@
 
 ##### 点击以下链接，下载并导入脚本，*如有和以前重复，先删除旧文件再导入*
 
-* <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.1/device.js">device.js</a>
-* <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.1/multiplayer.js">multiplayer.js</a>
-* <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.1/New.Euro.12.js">New Euro 12.js</a>
-* <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.1/play.js">play.js</a>
+* <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.2/device.js">device.js</a>
+* <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.2/multiplayer.js">multiplayer.js</a>
+* <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.2/New.Euro.12.js">New Euro 12.js</a>
+* <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.2/play.js">play.js</a>
 * 以下三个分辨率文件下载自己手机对应的那个就可以了，，非1920×1080分辨率的在导入时注意将文件名改为1920
-  * <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.1/profile1920.js">profile1920.js</a>
-  * <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.1/profile2160.js">profile2160.js</a>
-  * <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.1/profile2248.js">profile2248.js（2244/2246/2248的都下载这个）</a>
-* <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.1/robot.js">robot.js</a>
+  * <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.2/profile1920.js">profile1920.js</a>
+  * <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.2/profile2160.js">profile2160.js</a>
+  * <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.2/profile2248.js">profile2248.js（2244/2246/2248的都下载这个）</a>
+* <a href="https://github.com/Dr-Omega9834/Asphalt9/releases/download/1.2/robot.js">robot.js</a>
 * 除profile以外的其他文件导入时均需要保证文件名不变
 * 请确认脚本全部都导入后开始下一步
 
