@@ -17,7 +17,7 @@ module.exports = {
          */
         beforeRun() {
             // 判断是否从主页开始
-            while (true){
+            while (false){
                 if (carrerCheckState() == 1){
                     // toastLog("即将开始比赛");
                     break;
@@ -77,9 +77,10 @@ module.exports = {
             }
             toast("选择12关")
             sleep(700);
-            profile.carrer.swipeScreen();
+            // profile.carrer.swipeScreen();
 
             // toastLog("请在此处截图,截图时不要滑动屏幕");
+            robot.click(profile.carrer.block12X.x, profile.carrer.block12X.y);
             // exit();
             sleep(800);
             // 选择第12关
