@@ -88,6 +88,15 @@ module.exports = {
     // 多人
     mp: {
 
+        // classic race
+	    homeup: { x: 1841, y: 279 },
+        // limit race
+	    homedown: {x: 1842, y: 615 },
+        
+        // error
+		errorleft: { x: 225, y: 490},
+		errorright: { x: 1695, y:490},
+
         // 多人数据
         levelName : mpLevelName,
 
@@ -107,14 +116,20 @@ module.exports = {
         // 最上方积分图标
         credit: { x: 1203, y: 42 },
 
+      	// 车库按钮
+      	garage: { x: 670, y: 15 },
+
         // 多人块
-        multiplayer: { x: 690, y: 1050},
+        multiplayer: { x: 800, y: 1040},
+        multiplayer1: { x: 1165, y: 827},
 
         // 开始按钮
         start: { x: 960, y: 999 },
 
         // 领奖按钮
         claim: { x: 960, y: 750 },
+        mpackage1: { x: 1050, y: 565 },
+        mpackage2: { x: 1050, y: 600 },
         
         // 青铜
         bronze: { x: 1290, y: 168 },
