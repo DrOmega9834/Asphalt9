@@ -149,29 +149,52 @@ module.exports = {
             // 判断是否是否已经到达开始界面
             while (!Flag){
                 switch(mpCheckState()){
+                    // Home
+                    case 0: {
+                        toast('home');
+                        if (true) {
+                            robot.click(profile.mp.homeup.x, profile.mp.homeup.y);
+                        } else {
+                            robot.click(profile.mp.homedown.x, profile.mp.homedown.y);
+                        }
+                        sleep(2000);
+                        break;
+                    }
+                    // error
+                 	case 2: {
+                        toast('error');
+		                log ('error');
+		                for (let j=0; j<1; j++) {
+		              	    robot.back();
+                            sleep(1000);     
+		                }  
+		                sleep(2000);                       
+                     	break;            
+                    } 
+                        
                     // 游戏主界面
                     case 1: {
                         // 点击多人按钮
-                        log('index')
+                        //log('index')
                         robot.click(profile.mp.multiplayer.x, profile.mp.multiplayer.y);
                         sleep(2000);
                         break;
                     }
                     // 多人开始界面
                     case 3: {
-                        log('start')
+                        //log('start')
                         Flag = true;
                         break;
                     }
                     // 结算界面
                     case 5: {
-                        log('result')
+                        //log('result')
                         robot.back();
                         sleep(3950);
                     }
                     // 打满了 5 / 10 / 20 个奖杯
                     case 7: {
-                        log('claim')
+                        //log('claim')
                         robot.click(profile.mp.claim.x, profile.mp.claim.y);
                         sleep(2000);
                         break;
@@ -222,7 +245,7 @@ module.exports = {
             var left = 0;
             // 检查是否已经到达结算界面
             while (true) {
-                if (mpCheckState() == 5) {
+                if (mpCheckState() != -1) {
                     break;
                 }
                 // 若未跑完仍可点击氮气
@@ -250,8 +273,9 @@ module.exports = {
  * @param {string} level 段位
  */
 function hasFuel(level) {
-    log('checkFuel(' + level + ')');
+//    log('checkFuel(' + level + ')');
     var cars;
+    var swipes = 0;
 
     // 给cars[]赋值
     if (level == 'legend'){
@@ -273,15 +297,40 @@ function hasFuel(level) {
         cars = [1, 2];
         robot.click(profile.mp.bronze.x, profile.mp.bronze.y);
     }
-
-    sleep(4000);
     
     // 寻找还有油的车
     for (let i = 0; i < cars.length; i++) {
         let n = cars[i];
+        
+        // 定位到相应的level
+        if (level == 'legend'){
+            robot.click(profile.mp.legend.x, profile.mp.legend.y);
+        } else if (level == 'platinum'){
+            robot.click(profile.mp.platinum.x, profile.mp.platinum.y);
+        } else if (level == 'gold'){
+            robot.click(profile.mp.gold.x, profile.mp.gold.y);
+        } else if (level == 'silver'){
+            robot.click(profile.mp.silver.x, profile.mp.silver.y);
+        } else if (level == 'bronze'){
+            robot.click(profile.mp.bronze.x, profile.mp.bronze.y);
+        }
+
+        sleep(1000);
+        
+        swipes = parseInt( ( n - 1) / 2 );
+
+        for(let j = 0; j < swipes; j++) {
+            let dur = 700;
+            let slp = 2000;
+            sleep(slp);
+            toast("作揖1次");
+            robot.swipe(1004, 480, 472, 480, dur);
+            sleep(slp);
+        }
+
         // toastLog(n);
         var carPoint = {
-            x: profile.mp.firstCar.x + profile.mp.distance.x * parseInt((n - 1) / 2),
+            x: profile.mp.firstCar.x,
             y: profile.mp.firstCar.y + profile.mp.distance.y * ((n - 1) % 2)
         }
         // toastLog(carPoint.x + "," + carPoint.y);
@@ -290,6 +339,7 @@ function hasFuel(level) {
         // toastLog(colors.toString(carcheckState));
 
         if (colors.equals(carcheckState, "#ffc3fb12")) {
+            log(level+"-car"+n);
             robot.click( carPoint.x - profile.mp.distance.x / 2 , carPoint.y - profile.mp.distance.y / 2 );
             return true;
         }
@@ -356,31 +406,46 @@ function mpCheckState() {
     
     // 代币
     var token = images.pixel(img, profile.mp.token.x, profile.mp.token.y);
-    // log('token '+colors.toString(token))
-    var isToken = colors.equals(token, "#0090ff") || colors.equals(token, "#0392fb") || colors.equals(token, "#0492fa");
-    // log('isToken ' + isToken)
+    var isToken = colors.equals(token, "#0090ff") || colors.equals(token, "#0492fa") || colors.equals(token, "#0392fb");
 
     // 积分
     var credit = images.pixel(img, profile.mp.credit.x, profile.mp.credit.y);
-    // log('credit '+colors.toString(credit))
     var isCredit = colors.equals(credit, "#ffc600");
-    // log('isCredit ' + isCredit)
     
     // 多人开始按钮
     var start = images.pixel(img, profile.mp.start.x, profile.mp.start.y);
-    // log('start '+colors.toString(start))
     var isStart = colors.equals(start, "#c3fb12");
-    // log('isStart ' + isStart)
 
     // 继续按钮
     var next = images.pixel(img, profile.mp.goldenPoint.x, profile.mp.goldenPoint.y);
     var isNext = colors.equals(next, "#c3fb12");
-    // log('isNext ' + isNext)
 
-    var claim = images.pixel(img, profile.mp.claim.x, profile.mp.claim.y);
-    var isClaim = colors.isSimilar(claim, "#fdd901", 8, "diff");
-    // log('isClaim ' + isClaim)
+	// 车库按钮
+	var garage = images.pixel(img, profile.mp.garage.x, profile.mp.garage.y);
+    var isGarage = colors.equals(garage, "#fffffe") || colors.equals(garage, "#ffffff");
+		
+	// 领取5-10-20
+    var claim1 = images.pixel(img, profile.mp.mpackage1.x, profile.mp.mpackage1.y);
+    var claim2 = images.pixel(img, profile.mp.mpackage2.x, profile.mp.mpackage2.y);
+    var isClaim = colors.equals(claim1, "#c3fc0f") && colors.equals(claim2, "#fa154f");
 
+	// 多人选取
+    var homeup = images.pixel(img, profile.mp.homeup.x, profile.mp.homeup.y);
+    var isHomeup = colors.equals(homeup, "#ffffff");
+    var homedown = images.pixel(img, profile.mp.homedown.x, profile.mp.homedown.y);
+    var isHomedown = colors.equals(homedown, "#ffffff");
+
+	// 各种出错
+    var errorleft = images.pixel(img, profile.mp.errorleft.x, profile.mp.errorleft.y);
+    var errorright = images.pixel(img, profile.mp.errorright.x, profile.mp.errorright.y);
+    var iserror = colors.equals(errorleft, "#1c5ab2") && colors.equals(errorright, "#1c5ab2");
+
+    // 2 error
+    if (iserror)
+	    state = 2;
+    // 0 Home
+    else if (isToken && isCredit && isGarage && !isStart && !isClaim && isHomedown && isHomeup)
+        state = 0;
     // 1 主页
     if (isToken && isCredit && !isStart && !isClaim)
         state = 1;
