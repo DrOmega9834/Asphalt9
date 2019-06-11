@@ -88,14 +88,15 @@ module.exports = {
     // 多人
     mp: {
 
-        // classic race
-	    homeup: { x: 1841, y: 279 },
-        // limit race
-	    homedown: {x: 1842, y: 615 },
+        // 上面那个多人
+        homeup: { x : 1841, y : 279 },
+        
+        // 下面那个多人
+	    homedown: { x : 1842, y: 615 },
         
         // error
-		errorleft: { x: 225, y: 490},
-		errorright: { x: 1695, y:490},
+        errorleft: { x : 225, y : 490},
+		errorright: { x : 1695, y : 490},
 
         // 多人数据
         levelName : mpLevelName,
