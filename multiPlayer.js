@@ -20,10 +20,10 @@ for (;;counterMP++) {
         sleep(12000);
         PLAY.run(counterMP);
     }
-    else{
+    else {
         robot.back();
         counterMP--;
-        sleep(300000);
+        sleep(500);
         continue;
     }
 }
