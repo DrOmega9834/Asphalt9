@@ -13,25 +13,25 @@ var mpStatus = [
     // 传奇
     false, 
     // 白金
-    false, 
-    // 黄金
-    false, 
-    // 白银
     true, 
+    // 黄金
+    true, 
+    // 白银
+    false, 
     // 青铜
-    true
+    false
 ];
 var mpCarPick = {
     // 传奇
-    legend: [1, 2, 3, 4],
+    legend: [1, 2, 3, 4, 5],
     // 白金
-    platinum: [1, 2, 3, 4],
+    platinum: [1, 2, 4, 5, 6, 7, 9],
     // 黄金
-    gold: [1, 2, 3, 4],
+    gold: [5, 6, 7, 8, 9, 10, 11],
     // 白银
-    silver: [1, 2, 3, 4],
+    silver: [7, 8, 10, 11, 12],
     // 青铜
-    bronze: [1, 2, 3, 4]
+    bronze: [5, 6, 7, 8, 9, 10]
 };
 /*********************** 多人用车 结束 ******************************/
 
@@ -87,17 +87,15 @@ module.exports = {
 
     // 多人
     mp: {
-
-        // 上面那个多人
+        // classic race
         homeup: { x : 1841, y : 279 },
-        
-        // 下面那个多人
-	    homedown: { x : 1842, y: 615 },
+        // limit race
+        homedown: { x : 1842, y : 615 },
         
         // error
-        errorleft: { x : 225, y : 490},
-		errorright: { x : 1695, y : 490},
-
+        errorleft: { x : 225, y : 490 },
+        errorright: { x : 1695, y : 490 },
+        
         // 多人数据
         levelName : mpLevelName,
 
@@ -112,26 +110,30 @@ module.exports = {
         height : 1080,
 
         // 最上方代币图标
-        token: { x: 915, y: 42 },
+        token: { x: 1226, y: 42 },
 
         // 最上方积分图标
-        credit: { x: 1203, y: 42 },
-
-      	// 车库按钮
-      	garage: { x: 670, y: 15 },
+        credit: { x: 1530, y: 42 },
+        
+        // 返回按钮
+        back: { x: 25, y: 25 },
+        // 返回按钮里的黑色<
+        backward: { x: 51, y: 46 },
 
         // 多人块
-        multiplayer: { x: 800, y: 1040},
-        multiplayer1: { x: 1165, y: 827},
+        multiplayer: { x: 1050, y: 1050},
+        meiri: { x: 760, y: 1050},
+        teshu: { x: 400, y: 1050},
 
         // 开始按钮
         start: { x: 960, y: 999 },
 
         // 领奖按钮
         claim: { x: 960, y: 750 },
+        // 多人包的绿色
         mpackage1: { x: 1050, y: 565 },
         mpackage2: { x: 1050, y: 600 },
-        
+                
         // 青铜
         bronze: { x: 1290, y: 168 },
         
@@ -149,6 +151,7 @@ module.exports = {
 
         // 生涯,开始,继续
         goldenPoint: { x: 1500, y: 1000 },
+        
 
         // 第一辆车
         firstCar: { x: 693, y: 600 },
