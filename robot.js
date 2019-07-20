@@ -17,11 +17,15 @@ function LollipopRobot() {
     this.back = function () {
         return Back();
     }
+
+    this.home = function () {
+        return Home();
+    }
 }
 
 /**
  * 安卓7机器人
- * @constructortap
+ * @constructor
  */
 function NougatRobot() {
     this.click = function (x, y) {
@@ -35,10 +39,15 @@ function NougatRobot() {
     this.back = function () {
         return back();
     }
+
+    this.home = function () {
+        return home();
+    }
 }
 
 /**
  * 机器人工厂
+ * @constructor
  */
 function Robot() {
     if (device.sdkInt < 24) {
@@ -62,6 +71,10 @@ function Robot() {
     this.back = function () {
         return this.robot.back();
     };
+
+    this.home = function () {
+        return this.robot.home();
+    }
 }
 
 const robot = new Robot();
