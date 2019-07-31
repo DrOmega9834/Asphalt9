@@ -7,21 +7,46 @@ var carrerCars = [1, 2, 3, 4, 5, 6];
 /*********************** 生涯用车 ******************************/
 
 /*********************** 多人用车 开始 ******************************/
-var mpLevelName = ['legend', 'platinum', 'gold', 'silver', 'bronze'];
+var mpLevelName = ['legend', 'platinum', 'gold', 'silver', 'bronze', 'legend2', 'platinum2', 'gold2', 'silver2', 'bronze2'];
 // 传奇、白金、黄金、白银、青铜的车是否可用，true表示可用，false表示不可用
 var mpStatus = [
     false,  // 传奇 Legend
     true,   // 白金 Platinum
     true,   // 黄金 Gold
     false,  // 白银 Silver
-    false   // 青铜 Bronze
+    false,  // 青铜 Bronze
+        
+    // 传奇
+    false, 
+    // 白金
+    false, 
+    // 黄金
+    true, 
+    // 白银
+    true, 
+    // 青铜
+    true    
 ];
+
 var mpCarPick = {
     legend: [1, 2, 3, 4, 5],        // 传奇 Legend
     platinum: [1, 2, 4, 5, 6, 7, 9],// 白金 Platinum
     gold: [5, 6, 7, 8, 9, 10, 11],  // 黄金 Gold
     silver: [7, 8, 10, 11, 12],     // 白银 Silver
-    bronze: [5, 6, 7, 8, 9, 10]     // 青铜 Bronze
+    bronze: [5, 6, 7, 8, 9, 10],     // 青铜 Bronze
+    
+    // 传奇
+    legend2: [1, 2, 3, 4],
+    // 白金
+    platinum2: [1, 2, 3, 4, 5, 6, 7, 12],
+    // 黄金
+    gold2: [1, 2, 3],
+    // 白银
+    silver2: [1, 2, 3],
+    // 青铜
+    bronze2: [1, 2, 3]
+};
+
 };
 /*********************** 多人用车 结束 ******************************/
 
