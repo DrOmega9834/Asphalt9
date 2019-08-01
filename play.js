@@ -12,8 +12,9 @@ const DEVICE = require('device.js');
 var startTime = new Date().getTime();
 var timer = new Date().getTime();
 
-var lastLevel;
-var lastCar;
+var lastLevel = 0;
+var lastLevel2 = 5;
+var lastCar   = 0;
 
 DEVICE.checkPermission();
 
@@ -179,17 +180,13 @@ module.exports = {
                         sleep(2000);
                         break;
                     }
-                       		// error
-                    case -2: {
-                            toast('error');
-                            log ('error');
-                            for (let j=0; j<1; j++) {
-                                    robot.back();
-                                sleep(1000);     
-                            }  
-                            sleep(2000);                       
-                            break;            
-                } 
+                    // error
+             	    case -2: {
+			    toastLog('error');
+	              	    robot.back();
+	                    sleep(1000);                           
+                 	    break;            
+                    } 
                     case 2: {
                         robot.click(profile.mp.multiplayer.x, profile.mp.multiplayer.y);
                         sleep(1000);
@@ -360,17 +357,14 @@ module.exports = {
                         sleep(2000);
                         break;
                     }
-                        // error
-                    case -2: {
-                        toast('error');
-                        log ('error');
-                        for (let j=0; j<1; j++) {
-                            robot.back();
-                            sleep(1000);
-                        }
-                        sleep(2000);
-                        break;
-                    }
+                   	// error
+             		case -2: {
+                 		toastLog('error');
+	              	    robot.back();
+	                    sleep(1000);                           
+                 		break;            
+                    } 
+
                     // 单个多人
                     case 2: {
                         robot.click(profile.mp.multiplayer.x, profile.mp.multiplayer.y);
@@ -421,20 +415,38 @@ module.exports = {
         /**
          * 选车
          */
-        chooseCar() {
+        chooseCar() {        
+	/* 下方多人选车策略多变，所以此处有多个开关以供选择 */
+	// 不用选车直接开始
+	if (0) {
             robot.click(profile.mp.start.x, profile.mp.start.y);
             sleep(4000);
             robot.click(profile.mp.goldenPoint.x, profile.mp.goldenPoint.y);
             return true;
-
-            
+        }
+	// 使用上一次的车
+        if (0) {
+            robot.click(profile.mp.goldenPoint.x, profile.mp.goldenPoint.y);
+            sleep(2000);
+            if (up)
+                robot.click(1100, 450);
+            else
+                robot.click(1100, 850);
+            sleep(2000);
+            robot.click(profile.mp.goldenPoint.x, profile.mp.goldenPoint.y);
+            return true;
+        }    
+	// 常规选车
+        if (1) {
+            robot.click(profile.mp.start.x, profile.mp.start.y);
+            sleep(4000);
             var FOUND = false;
-            
-            for (let i = lastLevel; i < 5 && !FOUND; i++){
+    
+            for (let i = lastLevel2; i < 10 && !FOUND; i++){
                 if (status[i]){
                     if (hasFuel(levelName[i])){
                         FOUND = true;
-                        lastLevel = i;
+                        lastLevel2 = i;
                     }
                 }
             }
@@ -447,13 +459,14 @@ module.exports = {
             }
             else {
                 lastCar = 0;
-                lastLevel = 0;
-                
+                lastLevel2 = 5;      
+    
                 toastLog("\n无油。\nNo fuel.");
                 return false;
             }
-        },
-        
+        }
+    },      //end of chooseCar
+            
         /**
          * 完成每局比赛之后的结算
          * @param {number} counter_mp 已完成的多人比赛次数
