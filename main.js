@@ -44,6 +44,7 @@ if (0) {
         carHunt.chooseCar(up);
         sleep(10000);
         carHunt.run(i);
+        startTime = new Date().getTime();
     }
 }
 
