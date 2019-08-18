@@ -25,7 +25,7 @@
 * <a href = "#conatct">联系我们</a>
 * <a href = "#donation">捐赠</a>
 
-<h2 name="contact">联系我们:</h2>
+<h2 name="contact">联系我们：</h2>
 * omegadot9834@foxmail.com
 * ***先看完说明再发邮件问问题***
 

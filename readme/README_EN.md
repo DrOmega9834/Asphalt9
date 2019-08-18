@@ -20,11 +20,11 @@
 * <a href="#contact">Contact Us</a>
 * <a href="#donation">Donation</a>
 
-<h2 name='contact'>Contact us</a>
+<h2 name='contact'>Contact us</h2>
 
 * omegadot9834@foxmail.com
 
-<h2 name='donation'>Donation</a>
+<h2 name='donation'>Donation</h2>
 
 If you think our scripts is helpful for you, you can donate us, your donation is the best encouragement to us.<br/>
 
