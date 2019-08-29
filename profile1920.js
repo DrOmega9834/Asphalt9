@@ -146,7 +146,7 @@ module.exports = {
         // 领奖按钮
         claim: { x: 960, y: 750 },
         // 多人包的绿色
-        mpackage1: { x: 1050, y: 565 },
+        mpackage1: { x: 900, y: 600 },
         mpackage2: { x: 1050, y: 600 },
                 
         // 青铜
