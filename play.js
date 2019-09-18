@@ -917,7 +917,7 @@ function mpCheckState() {
 	// 领取5-10-20
     var claim1 = images.pixel(img, profile.mp.mpackage1.x, profile.mp.mpackage1.y);
     var claim2 = images.pixel(img, profile.mp.mpackage2.x, profile.mp.mpackage2.y);
-    var isClaim = colors.equals(claim1, "#c3fc0f") && colors.equals(claim2, "#fa154f");
+    var isClaim = colors.equals(claim1, "#fa154f") && colors.equals(claim2, "#fa154f");
 
 	// 多人选取
     var homeup = images.pixel(img, profile.mp.homeup.x, profile.mp.homeup.y);
