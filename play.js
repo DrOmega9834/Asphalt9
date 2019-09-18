@@ -140,8 +140,9 @@ module.exports = {
                     // toastLog("isNext ?= " + checkState());
                 }
             }
-            var nowTime = new Date.getTime();
-            toastLog(++counter_carrer + "场多人比赛已完成，平均用时" +parseInt((nowTime - startTime) / 1000 / counter_carrer)+"秒。\n即将开始下一场比赛。");
+            var nowTime = new Date().getTime();
+            counter_carrer++;
+            toastLog(counter_carrer + "场多人比赛已完成，平均用时" +parseInt((nowTime - startTime) / 1000 / counter_carrer)+"秒。\n即将开始下一场比赛。");
         }
     },
 
