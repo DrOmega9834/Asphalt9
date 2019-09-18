@@ -47,7 +47,6 @@ var mpCarPick = {
     bronze2: [1, 2, 3]
 };
 
-};
 /*********************** 多人用车 结束 ******************************/
 
 const robot = require('robot.js');
@@ -65,10 +64,13 @@ module.exports = {
         height : 1080,
     
         // 最上方代币图标
-        token: { x: 921 , y: 42 },
+        token: { x: 1226 , y: 42 },
     
         // 最上方积分图标
-        credit: { x: 1206 , y: 42 },
+        credit: { x: 1530 , y: 42 },
+
+        // 主界面的生涯块
+        carrerBlock : { x : 1860 , y : 1020 },
     
         // 生涯,开始,继续
         goldenPoint: { x: 1500, y: 1000 },

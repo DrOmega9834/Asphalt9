@@ -35,12 +35,10 @@ module.exports = {
             }
         
             // 点击生涯
-            robot.click(profile.carrer.goldenPoint.x, profile.carrer.goldenPoint.y);
+            robot.click(profile.carrer.carrerBlock.x, profile.carrer.carrerBlock.y);
             sleep(1000);
-            robot.click(profile.carrer.goldenPoint.x, profile.carrer.goldenPoint.y);
-            sleep(1000);
-            robot.click(profile.carrer.goldenPoint.x, profile.carrer.goldenPoint.y);
-            sleep(2000);
+            robot.click(profile.carrer.carrerBlock.x, profile.carrer.carrerBlock.y);
+            sleep(3000);
         
             // 点击位置
             robot.click(profile.carrer.careerPercent.x, profile.carrer.careerPercent.y);
