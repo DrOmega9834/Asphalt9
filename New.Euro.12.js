@@ -9,18 +9,18 @@ toast("开局可能会弹广告,请自己手动关掉,直至保证程序正常�
 sleep(3000);
 DEVICE.checkPermission();
 DEVICE.setEventListener();
-DEVICE.savePower();
+// DEVICE.savePower();
 var counterCarrer = 0;
-PLAY.beforeRun();
 
 while(true) {
+    // 每完成一场赛事之后确保脚本状态正常的控制器
+    PLAY.beforeRun();
+
     // 选择关卡
     PLAY.chooseMode();
-    sleep(2000);
 
     // 选车
     PLAY.chooseCar();
-    sleep(6000);
 
     // 跑完之后
     counterCarrer = PLAY.run(counterCarrer);

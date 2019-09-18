@@ -25,58 +25,73 @@ module.exports = {
          * 非循环部分
          */
         beforeRun() {
+            var carrerFlag = false;
             // 判断是否从主页开始
-            while (true){
-                if (carrerCheckState() == 1){
-                    // toastLog("即将开始比赛");
-                    break;
+            while (!carrerFlag) {
+                switch(carrerCheckState()) {
+                    // 是主页
+                    case 1 : {
+                        // toast(1)
+                        // 点击生涯
+                        robot.click(profile.carrer.carrerBlock.x, profile.carrer.carrerBlock.y);
+                        sleep(1000);
+                        robot.click(profile.carrer.carrerBlock.x, profile.carrer.carrerBlock.y);
+                        sleep(3000);
+                    
+                        // 点击位置
+                        robot.click(profile.carrer.careerPercent.x, profile.carrer.careerPercent.y);
+                        sleep(2000);
+                        // 选择关卡
+                        robot.click(profile.carrer.euro.x, profile.carrer.euro.y);
+                        sleep(1000);
+                        carrerFlag = true;
+                        break;
+                    }
+                    // 是Euro界面
+                    case 3 : {
+                        // toast(3)
+                        carrerFlag = true;
+                        break;
+                    }
+                    // 是结算界面
+                    case 5 : {
+                        // toast(5)
+                        robot.back();
+                        sleep(4000);
+                        break;
+                    }
+                    // 否则模拟按下一次返回键
+                    default : {
+                        // toast("default")
+                        robot.back();
+                        sleep(8000);
+                        break;
+                    }
                 }
-                // else toastLog("isHome ?= " + checkState());
             }
-        
-            // 点击生涯
-            robot.click(profile.carrer.carrerBlock.x, profile.carrer.carrerBlock.y);
-            sleep(1000);
-            robot.click(profile.carrer.carrerBlock.x, profile.carrer.carrerBlock.y);
-            sleep(3000);
-        
-            // 点击位置
-            robot.click(profile.carrer.careerPercent.x, profile.carrer.careerPercent.y);
-            sleep(2000);
-            // 选择关卡
-            robot.click(profile.carrer.euro.x, profile.carrer.euro.y);
-            sleep(1000);
+            // toastLog("The beforeRun() ends.");
         },
 
         /**
          * 选择关卡
          * @param {Number} counter_carrer 已完成的生涯比赛次数
          */
-        chooseMode(counter_carrer) {
-            if (!counter_carrer){
-                while (true){
-                    if (carrerCheckState() == 3){
-                        toast("选择关卡");
-                        break;
-                    }
-                    else {
-                        log("isEuro ?= " + carrerCheckState());
-                        sleep(200);
-                    }
-                }
-            }
+        chooseMode() {
             
-            sleep(700);
+            sleep(1000);
             profile.carrer.swipeScreen();
 
             // toastLog("请在此处截图,截图时不要滑动屏幕");
             // exit();
-            sleep(800);
+            sleep(1000);
             // 选择第12关
             robot.click(profile.carrer.block12.x, profile.carrer.block12.y);
+            sleep(2000);
 
             // 继续
             robot.click(profile.carrer.goldenPoint.x, profile.carrer.goldenPoint.y);
+            // toastLog("The chooseMode() ends.");
+            sleep(2000);
         },
 
         /**
@@ -103,6 +118,8 @@ module.exports = {
             sleep(4000);
             // 开始
             robot.click(profile.carrer.goldenPoint.x, profile.carrer.goldenPoint.y);
+            // toastLog("The chooseCar() ends.");
+            sleep(6000);    
         },
 
         /**
@@ -116,7 +133,7 @@ module.exports = {
                 if (carrerCheckState() == 5) {
                     break;
                 }
-                // 若未跑完仍可点击氮气
+                // 若未跑完,则点击氮气
                 else {
                     robot.click(profile.carrer.width * 4 / 5, profile.carrer.height / 2);
                     sleep(1000);
@@ -124,24 +141,6 @@ module.exports = {
                 }
             }
             toastLog(++counter_carrer + "场比赛已完成");
-            
-            var counter_euro = 0;
-            while (counter_euro < 15) {
-                // 检查是否返回euro界面
-                switch(carrerCheckState()) {
-                    // 是Euro界面
-                    case 3:{
-                        counter_euro++;
-                        break;
-                    }
-                    // 否则模拟按下一次返回键
-                    default:
-                        robot.back();
-                        sleep(3800);
-                }
-                sleep(200);
-            }
-            toastLog("即将开始下一场比赛");
         }
     },
 
