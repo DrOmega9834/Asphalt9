@@ -171,9 +171,9 @@ module.exports = {
         
 
         // 第一辆车
-        firstCar: { x: 693, y: 600 },
+        firstCar: { x: 344, y: 611 },
 
         // 车辆间距
-        distance: { x: 510, y: 355 }
+        distance: { x: 694, y: 355 }
     }    
 } 
