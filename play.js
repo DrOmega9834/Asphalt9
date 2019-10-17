@@ -834,7 +834,7 @@ function judgeThisScreenFuel(n) {
     var carcheckState = images.pixel(img, carPoint.x, carPoint.y);
     // toastLog(colors.toString(carcheckState));
 
-    if (colors.equals(carcheckState, "#ffc3fb12")) {
+    if (colors.equals(carcheckState, "#ffc3fb13")) {
         return true;
     } else {
         return false;
@@ -848,7 +848,7 @@ function judgeThisScreenFuel(n) {
 function horizontalSwipe(swipes) {
     for(let i = 0; i < swipes; i++) {
         // toast("作揖1次");
-        robot.swipe(1004, 480, 472, 480, 700);
+        robot.swipe(991+100, 480, 297+98, 480, 700);
         sleep(2000);
     }
 }
