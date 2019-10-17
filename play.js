@@ -142,7 +142,8 @@ module.exports = {
             }
             var nowTime = new Date().getTime();
             counter_carrer++;
-            toastLog(counter_carrer + "场多人比赛已完成，平均用时" +parseInt((nowTime - startTime) / 1000 / counter_carrer)+"秒。\n即将开始下一场比赛。");
+            toastLog(counter_carrer + "场生涯比赛已完成，平均用时" +parseInt((nowTime - startTime) / 1000 / counter_carrer)+"秒。\n即将开始下一场比赛。");
+            return counter_carrer;
         }
     },
 
@@ -858,20 +859,29 @@ function horizontalSwipe(swipes) {
 function carrerCheckState() {
     var img = captureScreen();
     
-    // 若干点的颜色值
     var token = images.pixel(img, profile.carrer.token.x, profile.carrer.token.y);
+    var isToken = colors.equals(token, "#0090ff");
+
     var credit = images.pixel(img, profile.carrer.credit.x, profile.carrer.credit.y);
+    var isCredit = colors.isSimilar(credit, "#ffc600", 2, "diff");
+
     var goldenPoint = images.pixel(img, profile.carrer.goldenPoint.x, profile.carrer.goldenPoint.y);
+    var isGoldenPoint = colors.equals(goldenPoint, "#c3fb12")
+
+    var questionMark = images.pixel(img, profile.carrer.questionMark.x, profile.carrer.questionMark.y);
+    var isQuestionMark = colors.equals(questionMark, "#ff0054")
+
     var recommendedPoints = images.pixel(img, profile.carrer.recommendedPoints.x, profile.carrer.recommendedPoints.y);
+    var isRecommendedPoints = colors.equals(recommendedPoints, "#c3fc0f") || colors.equals(recommendedPoints, "#ff0054")
 
     // 1 主页
-    if (!colors.equals(goldenPoint, "#c3fb12") && colors.equals(token, "#0090ff") && colors.isSimilar(credit, "#ffc600", 2, "diff"))
+    if (!isGoldenPoint && isToken && isCredit && !isQuestionMark)
         return 1;
     // 3 EURO
-    if (colors.equals(recommendedPoints, "#c3fc0f") || colors.equals(recommendedPoints, "#ff0054"))
+    if (isRecommendedPoints && isQuestionMark)
         return 3;
     // 5 结算
-    if (colors.equals(goldenPoint, "#c3fb12") && !(colors.equals(recommendedPoints, "#c3fc0f") || colors.equals(recommendedPoints, "#ff0054")))
+    if (isGoldenPoint && !isRecommendedPoints)
         return 5;
     /*
     toastLog("goldenPoint is " + colors.toString(goldenPoint));

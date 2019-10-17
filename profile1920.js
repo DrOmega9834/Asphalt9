@@ -73,16 +73,19 @@ module.exports = {
         carrerBlock : { x : 1860 , y : 1020 },
     
         // 生涯,开始,继续
-        goldenPoint: { x: 1500, y: 1000 },
+        goldenPoint : { x: 1500, y: 1000 },
     
         // 生涯百分比
-        careerPercent: { x: 1560, y: 1050 },
+        careerPercent : { x: 1560, y: 1050 },
     
         // euro
-        euro: { x: 350, y: 300 },
+        euro : { x: 350, y: 300 },
+
+        // euro界面右上角任务旁边的红底白色问号
+        questionMark : { x : 1860 , y : 153},
     
         // 选关
-        swipeScreen: function () {
+        swipeScreen : function () {
             for (i = 0; i < 4; i++) {
                 robot.swipe(this.height * 2 / 3, 150, this.height * 2 / 3, 900, 400);
                 sleep(200);
