@@ -76,7 +76,7 @@ module.exports = {
         goldenPoint : { x: 1500, y: 1000 },
     
         // 生涯百分比
-        careerPercent : { x: 1560, y: 1050 },
+        careerPercent : { x: 1530, y: 1050 },
     
         // euro
         euro : { x: 350, y: 300 },
@@ -99,10 +99,10 @@ module.exports = {
         recommendedPoints: { x: 1800, y: 900 },
     
         // 第一辆车
-        firstCar: { x: 555, y: 616 },
+        firstCar: { x: 164, y: 616 },
     
         // 车辆间距
-        distance: { x: 519, y: 365 },
+        distance: { x: 711, y: 364 },
     },
 
     // 多人
@@ -177,6 +177,6 @@ module.exports = {
         firstCar: { x: 344, y: 611 },
 
         // 车辆间距
-        distance: { x: 694, y: 355 }
+        distance: { x: 694, y: 356 }
     }    
 } 

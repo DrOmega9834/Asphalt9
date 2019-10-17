@@ -69,7 +69,7 @@ module.exports = {
                     }
                 }
             }
-            // toastLog("The beforeRun() ends.");
+            toastLog("The beforeRun() ends.");
         },
 
         /**
@@ -90,7 +90,7 @@ module.exports = {
 
             // 继续
             robot.click(profile.carrer.goldenPoint.x, profile.carrer.goldenPoint.y);
-            // toastLog("The chooseMode() ends.");
+            toastLog("The chooseMode() ends.");
             sleep(2000);
         },
 
@@ -110,15 +110,15 @@ module.exports = {
                 var carcheckState = images.pixel(img, carPoint.x, carPoint.y);
                 // toastLog(colors.toString(carcheckState));
 
-                if (colors.equals(carcheckState, "#ffc3fb12")) {
-                    robot.click(carPoint.x - profile.carrer.distance.x / 2, carPoint.y - profile.carrer.distance.y / 2);
+                if (colors.equals(carcheckState, "#ffc3fb13")) {
+                    robot.click(carPoint.x , carPoint.y);
                     break;
                 }
             }
             sleep(4000);
             // 开始
             robot.click(profile.carrer.goldenPoint.x, profile.carrer.goldenPoint.y);
-            // toastLog("The chooseCar() ends.");
+            toastLog("The chooseCar() ends.");
             sleep(6000);    
         },
 
