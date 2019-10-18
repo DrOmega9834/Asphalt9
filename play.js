@@ -902,7 +902,7 @@ function mpCheckState() {
     
     // 代币
     var token = images.pixel(img, profile.mp.token.x, profile.mp.token.y);
-    var isToken = colors.equals(token, "#0090ff") || colors.equals(token, "#0492fa") || colors.equals(token, "#0392fb") || colors.equals(token, "#0291fd");
+    var isToken = colors.equals(token, "#0090ff") || colors.equals(token, "#0492fa") || colors.equals(token, "#0392fb") || colors.equals(token, "#0291fd")  || colors.equals(token, "#0391fc");
 
     // 积分
     var credit = images.pixel(img, profile.mp.credit.x, profile.mp.credit.y);
