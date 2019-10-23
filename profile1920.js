@@ -113,8 +113,8 @@ module.exports = {
         homedown: { x : 1842, y : 615 },
         
         // error
-        errorleft: { x : 225, y : 490 },
-        errorright: { x : 1695, y : 490 },
+        errorleft: { x : 225, y : 765 },
+        errorright: { x : 1695, y : 765 },
         
         // 多人数据
         levelName : mpLevelName,
