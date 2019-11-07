@@ -777,7 +777,7 @@ function scanFuel(cars) {
     var carFuel = new Array(maxCar);
 
     // 先滑动最小的次数
-    toast('滑动最小次数');
+    // toast('滑动最小次数');
     horizontalSwipe(minSwipes);
     // 记录扫描进度
     var carNum = 2 * minSwipes;
@@ -787,7 +787,7 @@ function scanFuel(cars) {
         for (let j = 1; j <= 6; j++) {
             carFuel[carNum + j] = judgeThisScreenFuel(j);
         }
-        toast('滑动3列')
+        // toast('滑动3列')
         horizontalSwipe(3);
         carNum += 6;
     }
@@ -797,7 +797,7 @@ function scanFuel(cars) {
         for (let j = 1; j <= 2; j++) {
             carFuel[carNum + j] = judgeThisScreenFuel(j);
         }
-        toast('滑动1列')
+        // toast('滑动1列')
         horizontalSwipe(1);
         carNum += 2;
     }
