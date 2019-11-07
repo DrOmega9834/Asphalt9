@@ -848,7 +848,7 @@ function judgeThisScreenFuel(n) {
 function horizontalSwipe(swipes) {
     for(let i = 0; i < swipes; i++) {
         // toast("作揖1次");
-        robot.swipe(991+100, 480, 297+98, 480, 700);
+        robot.swipe(1091, 480, 390, 480, 700);
         sleep(2000);
     }
 }
