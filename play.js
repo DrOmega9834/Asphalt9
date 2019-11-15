@@ -922,7 +922,7 @@ function mpCheckState() {
 
     // 返回按钮
     var back = images.pixel(img, profile.mp.back.x, profile.mp.back.y);
-    var backward = images.pixel(img, 51, 46);
+    var backward = images.pixel(img, profile.mp.backward.x, profile.mp.backward.y);
     var isBack = (colors.equals(back, "#fffffe") || colors.equals(back, "#ffffff")) && colors.equals(backward, "#010101");
 		
 	// 领取5-10-20
@@ -1025,7 +1025,7 @@ function chCheckState() {
     
     // 返回按钮
     var back = images.pixel(img, profile.mp.back.x, profile.mp.back.y);
-    var backward = images.pixel(img, 51, 46);
+    var backward = images.pixel(img, profile.mp.backward.x, profile.mp.backward.y);
     var isBack = (colors.equals(back, "#fffffe") || colors.equals(back, "#ffffff")) && colors.equals(backward, "#010101");
     
     // 各种出错
