@@ -177,6 +177,11 @@ module.exports = {
         firstCar: { x: 344, y: 611 },
 
         // 车辆间距
-        distance: { x: 694, y: 356 }
+        distance: { x: 694, y: 356 },
+        
+        // 滑动
+        swipeStart: { x: 1091, y: 480 },
+        swipeEnd:   { x: 395, y: 480 }
+        
     }    
 } 
