@@ -96,9 +96,9 @@ module.exports = {
  //       homedown: {x: 1842, y: 896 },
         
 		// 出错窗口左下角=#1c5ab2蓝色
-		errorleft: { x: 225, y: 765},
+		errorleft: { x: 276, y: 816},
 		// 出错窗口右下角=#1c5ab2蓝色
-		errorright: { x: 1695, y:765},
+		errorright: { x: 2065, y:816},
 		
         // 多人数据
         levelName : mpLevelName,
