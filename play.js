@@ -978,7 +978,7 @@ if (false) {
     else if (isNext && !isCredit && !isToken)
         state = 5;
     // 7 5/10/20奖杯包
-    else if (isToken && isCredit && isClaim)
+    else if (isClaim)
         state = 7;
     
     return state;
