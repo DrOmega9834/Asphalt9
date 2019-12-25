@@ -98,9 +98,7 @@ function chCheckState() {
 }
 
 function beforeRun() {
-    var Flag = false;
 
-    while (!Flag){
         var chStatus = chCheckState();
 
         switch(chStatus){
@@ -131,13 +129,12 @@ function beforeRun() {
                 
         }
         sleep(100);
-    }
 }
     
 sleep(7000);
 toastLog("RUN.");
 while ( times > 0 ) {
     beforeRun();
-    sleep(1800);
+    sleep(900);
 }
 toastLog("end.");
