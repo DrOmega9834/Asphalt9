@@ -355,13 +355,6 @@ mp2: {
                     sleep(1000);                           
              		break;            
                 } 
-                // 单个多人
-                case 2: {
-                    toastLog('dange');
-                    robot.click(profile.mp.multiplayer.x, profile.mp.multiplayer.y);
-                    sleep(1000);
-                    break;
-                }
                     // 游戏主界面
                 case 1: {
                     // 点击多人按钮
