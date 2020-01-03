@@ -795,11 +795,11 @@ function mpCheckState() {
     
     // 代币
     var token = images.pixel(img, profile.mp.token.x, profile.mp.token.y);
-    var isToken = colors.equals(token, "#0090ff") || colors.equals(token, "#0492fa") || colors.equals(token, "#0392fb") || colors.equals(token, "#0291fd");
+    var isToken = colors.isSimilar(token, "#0090ff", 20, "diff");
 
     // 积分
     var credit = images.pixel(img, profile.mp.credit.x, profile.mp.credit.y);
-    var isCredit = ( colors.equals(credit, "#ffc600") || colors.equals(credit, "#ffc500") );
+    var isCredit = colors.isSimilar(credit, "#ffc600", 10, "diff");
     
     // 多人开始按钮
     var start = images.pixel(img, profile.mp.start.x, profile.mp.start.y);
