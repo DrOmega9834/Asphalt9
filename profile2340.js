@@ -89,11 +89,9 @@ module.exports = {
     // 多人
     mp: {
         // 上方多人>尖端=#ffffff白色，多人赛事调整时y会有变化
-        homeup: { x: 1841, y: 279 },
-//        homeup: { x: 1841, y: 226 },
+        homeup: { x: 2208, y: 269 },
         // 下方多人>尖端=#ffffff，多人赛事调整时y会有变化
-        homedown: {x: 1842, y: 615 },
- //       homedown: {x: 1842, y: 896 },
+        homedown: {x: 2209, y: 677 },
         
 		// 出错窗口左下角=#1c5ab2蓝色
 		errorleft: { x: 276, y: 816},
@@ -137,7 +135,7 @@ module.exports = {
         // 领奖按钮
         claim: { x: 960, y: 750 },
         // 多人包的车库等级标签=#fa154f红色
-        mpackage1: { x: 1140, y: 600 },
+        mpackage1: { x: 1120, y: 600 },
         mpackage2: { x: 1266, y: 600 },
                 
         // 青铜
