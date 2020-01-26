@@ -890,7 +890,7 @@ function chCheckState() {
     var isToken = colors.equals(token, "#0090ff") || colors.equals(token, "#0492fa") || colors.equals(token, "#0392fb") || colors.equals(token, "#0291fd") || colors.equals(token, "#0391fc");
     
     // 积分
-    var credit = images.pixel(img, profile.mp.credit.x, profile.mp.credit.y);
+    var credit = images.pixel(img, 1780, profile.mp.credit.y);
     var isCredit = ( colors.equals(credit, "#ffc600") || colors.equals(credit, "#ffc500") );
     
     // 买票➕
@@ -957,7 +957,7 @@ function chCheckState() {
     else if (isToken && isCredit && isBack && isEveryday && !isNext)
         state = 3;
     // 5 寻车开始
-    else if (isToken && isCredit && isBack && isNext)
+    else if (isToken && isCredit && isBack && isNext && !isEveryday)
         state = 5;
 
     return state;
