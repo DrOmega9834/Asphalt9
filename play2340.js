@@ -890,8 +890,8 @@ function chCheckState() {
     var isToken = colors.isSimilar(token, "#0090ff", 20, "diff");
 
     // 积分
-    var credit = images.pixel(img, profile.mp.credit.x, profile.mp.credit.y);
-    var isCredit = colors.isSimilar(credit, "#ffc600", 10, "diff");
+    var credit = images.pixel(img, 1780, profile.mp.credit.y);
+    var isCredit = ( colors.equals(credit, "#ffc600") || colors.equals(credit, "#ffc500") );
     
     // 买票➕
       var everyday_duoren = images.pixel(img, 2215, 204);
@@ -957,7 +957,8 @@ function chCheckState() {
     else if (isToken && isCredit && isBack && isEveryday && !isNext)
         state = 3;
     // 5 寻车开始
-    else if (isToken && isCredit && isBack && isNext && isEveryday)
+    else if (isToken && isCredit && isBack && isNext && !isEveryday)
+
         state = 5;
 
     return state;
