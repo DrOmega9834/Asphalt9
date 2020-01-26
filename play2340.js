@@ -905,7 +905,7 @@ function chCheckState() {
     var isCarHunt = colors.equals(start, "#c3fb12") || colors.equals(start, "#c6fb24");
     
     // 寻车开始按钮
-    var next = images.pixel(img, profile.mp.goldenPoint.x, profile.mp.goldenPoint.y);
+    var next = images.pixel(img, 1780, profile.mp.goldenPoint.y);
     var isNext = colors.equals(next, "#c3fb12") || colors.equals(next, "#c6fb24");
 
     // 每日按钮
