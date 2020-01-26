@@ -551,10 +551,10 @@ mp2: {
                     // 每日寻车
                     if (position != 0) {
                         // 寻车赛事按钮位置
-                        var CarHuntX = 255 + 280 * position;
-                        var CarHuntY = 1015;
-                        if (CarHuntX > 1920) 
-                            CarHuntX = 1910;
+                        var CarHuntX = 270 + 315 * position;
+                        var CarHuntY = 840;
+                        if (CarHuntX > 2340) 
+                            CarHuntX = 2300;
                         robot.click(CarHuntX, CarHuntY);
                      //   toast('start');
                         sleep(1000);
@@ -619,9 +619,9 @@ mp2: {
         robot.click(profile.mp.goldenPoint.x, profile.mp.goldenPoint.y);
         sleep(2000);
         if (up)
-            robot.click(1100, 450);
+            robot.click(profile.mp.width / 2, 500);
         else
-            robot.click(1100, 850);
+            robot.click(profile.mp.width / 2, 850);
         sleep(2000);
         robot.click(profile.mp.goldenPoint.x, profile.mp.goldenPoint.y);
         return true;
@@ -887,26 +887,26 @@ function chCheckState() {
     
     // 代币
     var token = images.pixel(img, profile.mp.token.x, profile.mp.token.y);
-    var isToken = colors.equals(token, "#0090ff") || colors.equals(token, "#0492fa") || colors.equals(token, "#0392fb") || colors.equals(token, "#0291fd") || colors.equals(token, "#0391fc");
-    
+    var isToken = colors.isSimilar(token, "#0090ff", 20, "diff");
+
     // 积分
     var credit = images.pixel(img, profile.mp.credit.x, profile.mp.credit.y);
-    var isCredit = ( colors.equals(credit, "#ffc600") || colors.equals(credit, "#ffc500") );
+    var isCredit = colors.isSimilar(credit, "#ffc600", 10, "diff");
     
     // 买票➕
-      var everyday_duoren = images.pixel(img, 1817, 161);
-      var everyday_teshu = images.pixel(img, 1817, 184);
-      var isEveryday = colors.equals(everyday_duoren, "#c3fb12") || colors.equals(everyday_teshu, "#c3fb12") ;
+      var everyday_duoren = images.pixel(img, 2215, 204);
+      var everyday_teshu = images.pixel(img, 2204, 215);
+      var isEveryday = colors.isSimilar(everyday_duoren, "#c3fb12", 10, "diff");
     
     // 寻车赛事按钮位置
     var CarHuntX = 1320;
     var CarHuntY = 1015;
     var CarHunt = images.pixel(img, CarHuntX, CarHuntY);
-    var isCarHunt = colors.equals(start, "#c3fb12") || colors.equals(start, "#c6fb24");
+    var isCarHunt = colors.isSimilar(CarHunt, "#c3fb12", 10, "diff");
     
     // 寻车开始按钮
     var next = images.pixel(img, profile.mp.goldenPoint.x, profile.mp.goldenPoint.y);
-    var isNext = colors.equals(next, "#c3fb12") || colors.equals(next, "#c6fb24");
+    var isNext = colors.isSimilar(next, "#c3fb12", 10, "diff");
 
     // 每日按钮
     var meiri = images.pixel(img, profile.mp.meiri.x, profile.mp.meiri.y);
@@ -957,7 +957,7 @@ function chCheckState() {
     else if (isToken && isCredit && isBack && isEveryday && !isNext)
         state = 3;
     // 5 寻车开始
-    else if (isToken && isCredit && isBack && isNext)
+    else if (isToken && isCredit && isBack && isNext && isEveryday)
         state = 5;
 
     return state;
