@@ -890,7 +890,7 @@ function chCheckState() {
     var isToken = colors.isSimilar(token, "#0090ff", 20, "diff");
 
     // 积分
-    var credit = images.pixel(img, 1780, profile.mp.credit.y);
+    var credit = images.pixel(img, profile.mp.credit.x, profile.mp.credit.y);
     var isCredit = ( colors.equals(credit, "#ffc600") || colors.equals(credit, "#ffc500") );
     
     // 买票➕
@@ -905,7 +905,7 @@ function chCheckState() {
     var isCarHunt = colors.isSimilar(CarHunt, "#c3fb12", 10, "diff");
     
     // 寻车开始按钮
-    var next = images.pixel(img, profile.mp.goldenPoint.x, profile.mp.goldenPoint.y);
+    var next = images.pixel(img, 1780, profile.mp.goldenPoint.y);
     var isNext = colors.isSimilar(next, "#c3fb12", 10, "diff");
 
     // 每日按钮
