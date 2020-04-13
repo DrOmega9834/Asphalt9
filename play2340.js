@@ -551,7 +551,7 @@ mp2: {
                     // 每日寻车
                     if (position != 0) {
                         // 寻车赛事按钮位置
-                        var CarHuntX = 270 + 315 * position;
+                        var CarHuntX = 290 + 280 * position;
                         var CarHuntY = 840;
                         if (CarHuntX > 2340) 
                             CarHuntX = 2300;
