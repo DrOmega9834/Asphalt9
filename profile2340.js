@@ -154,7 +154,7 @@ module.exports = {
         legend: { x: 2140, y: 250 },
 
         // 生涯,开始,继续
-        goldenPoint: { x: 1900, y: 1000 },
+        goldenPoint: { x: 1900, y: 920 },
         
 
         // 第一辆车
